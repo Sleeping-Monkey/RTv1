@@ -6,7 +6,7 @@
 /*   By: ssheba <ssheba@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/24 17:57:37 by ssheba            #+#    #+#             */
-/*   Updated: 2019/08/09 12:46:02 by ssheba           ###   ########.fr       */
+/*   Updated: 2019/08/09 13:00:42 by ssheba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,14 @@ int	init_objects(t_sdl *win)
 //		return (0);
 //	if (!(win->mas[2] = create_cylinder(VEC(10, 50, 1000), VEC(1, 0, 0), 100, COLOR(0, 0, 150, 0), 10)))
 //		return (0);
-//	if (!(win->mas[0] = create_cylinder(VEC(WIN_X * 0.5, WIN_Y * 0.5, 10), VEC(1, 1, 0), WIN_X * 0.1, COLOR(155, 0, 150, 0), 1)))
-//		return (0);
+	if (!(win->mas[0] = create_cylinder(VEC(WIN_X * 0.5, WIN_Y * 0.5, 10), VEC(1, 1, 0), WIN_X * 0.1, COLOR(155, 0, 150, 0), 1)))
+		return (0);
 //	if (!(win->mas[0] = create_cylinder(VEC(WIN_X * 0.5, WIN_Y * 0.5, 10), VEC(0, 1, 0), WIN_X * 0.1, COLOR(155, 0, 150, 0), 1)))
 //		return (0);
 //	if (!(win->mas[2] = create_cylinder(VEC(WIN_X * 0.5, WIN_Y * 0.5, 10), VEC(0, 0, 1), WIN_X * 0.1, COLOR(155, 0, 150, 0), 1)))
 //		return (0);
-	if (!(win->mas[0] = create_sphere(VEC(WIN_X * 0.5, WIN_Y * 0.5, 700), 100, COLOR(150, 0, 0, 0), 1)))
-		return (0);
+//	if (!(win->mas[0] = create_sphere(VEC(WIN_X * 0.5, WIN_Y * 0.5, 700), 100, COLOR(150, 0, 0, 0), 1)))
+//		return (0);
 //	if (!(win->mas[1] = create_sphere(VEC(WIN_X * 0.6, WIN_Y * 0.5, 10), 50, COLOR(150, 0, 0, 0), 5)))
 //		return (0);
 //	if (!(win->mas[2] = create_sphere(VEC(WIN_X * 0.1, WIN_Y * 0.3, 0), 50, COLOR(150, 0, 0, 0), 10)))
