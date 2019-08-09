@@ -6,7 +6,7 @@
 /*   By: ssheba <ssheba@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/23 13:50:57 by ssheba            #+#    #+#             */
-/*   Updated: 2019/07/25 16:43:11 by ssheba           ###   ########.fr       */
+/*   Updated: 2019/08/09 11:37:37 by ssheba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,30 +16,8 @@
 # include "SDL.h"
 # include "geometry.h"
 
-# define WIN_X 100
-# define WIN_Y 100
-
-
-typedef struct	s_point
-{
-	unsigned	x;
-	unsigned	y;
-	t_color		color;
-}				t_point;
-
-typedef struct	s_img
-{
-	SDL_Surface		*img;
-	unsigned char	*pixels;
-}				t_img;
-
-typedef struct	s_sdl
-{
-	SDL_Window		*win;
-	t_img			img;
-	SDL_Event		e;
-	t_object		*mas[10];
-}				t_sdl;
+# define WIN_X	1000
+# define WIN_Y	1000
 
 void			set_pixel(t_sdl *win, t_point *pos);
 

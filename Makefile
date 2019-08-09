@@ -6,7 +6,7 @@
 #    By: ssheba <ssheba@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/07/22 13:30:17 by ssheba            #+#    #+#              #
-#    Updated: 2019/07/25 10:51:19 by ssheba           ###   ########.fr        #
+#    Updated: 2019/08/07 17:23:19 by ssheba           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,27 +16,35 @@ SRC_DIR		=	./src
 OBJ_DIR		=	./obj
 INC_DIR		=	./includes
 
-SRC_FILES	=	add_vec.c get_sphere_color.c scalar_prod.c sub_vec.c \
-				create_sphere.c init_objects.c set_pixel.c trace.c event.c \
-				main.c sphere_intersection.c finish.c mul_vec_real.c start.c
+SRC_FILES	=	get_sphere_color.c create_sphere.c init_objects.c set_pixel.c \
+				trace.c event.c main.c sphere_intersection.c finish.c start.c \
+				get_lighting.c init_shine.c create_plane.c get_plane_color.c \
+				plane_intersection.c create_cylinder.c cylinder_intersection.c \
+				get_cylinder_color.c mat4.c mat4_op.c vec3_op.c vec3.c create_person.c
 OBJ_FILES	=	$(SRC_FILES:.c=.o)
-INC_FILES	=	my_sdl.h
+INC_FILES	=	my_sdl.h geometry.h mat.h
 
 SRC			=	$(addprefix $(SRC_DIR)/, $(SRC_FILES))
 OBJ			=	$(addprefix $(OBJ_DIR)/, $(OBJ_FILES))
 INC			=	$(addprefix $(INC_DIR)/, $(INC_FILES))
 
-INCLUDES	=	-I ~/Library/Frameworks/SDL2.framework/Versions/A/Headers -I $(INC_DIR)
-FLAGS		=	-Wall -Wextra -Werror $(INCLUDES)
+LIBFT_DIR	=	./libft
+LIBFT		=	$(LIBFT_DIR)/libft.a
+
+INCLUDES	=	-I ./Frameworks/SDL2.framework/Versions/A/Headers -I $(INC_DIR) -I $(LIBFT_DIR)
+FLAGS		=	-Wall -Wextra -Werror $(INCLUDES) 
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
-	gcc $(FLAGS) -o $(NAME) $(OBJ) -F ~/Library/Frameworks/ -framework SDL2
+$(NAME): $(LIBFT) $(OBJ) 
+	gcc $(FLAGS) -o $(NAME) $(OBJ) $(LIBFT) -F ./Frameworks/ -framework SDL2 -lpthread
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(INC)
 	mkdir -p $(OBJ_DIR)
 	gcc -c $(FLAGS) -o $@ $<
+
+$(LIBFT) : FAKE
+	$(MAKE) -C $(LIBFT_DIR)
 
 clean:
 	rm -rf $(OBJ_DIR) 
@@ -45,3 +53,5 @@ fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
+
+.PHONY: FAKE

@@ -1,18 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mul_vec_real.c                                     :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ssheba <ssheba@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/24 17:07:43 by ssheba            #+#    #+#             */
-/*   Updated: 2019/07/24 17:08:55 by ssheba           ###   ########.fr       */
+/*   Created: 2019/04/03 11:15:54 by ssheba            #+#    #+#             */
+/*   Updated: 2019/04/12 13:22:38 by ssheba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "geometry.h"
+#include "libft.h"
 
-t_vector		mul_vec_real(t_vector *a, t_real r)
+void	ft_bzero(void *s, size_t n)
 {
-	return (VECTOR(a->x * r, a->y * r, a->z * r));
+	if (n == 0)
+		return ;
+	s = ft_memset(s, 0, n);
 }

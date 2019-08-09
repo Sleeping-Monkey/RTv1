@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   add_vec.c                                          :+:      :+:    :+:   */
+/*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ssheba <ssheba@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ssheba <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/24 17:06:04 by ssheba            #+#    #+#             */
-/*   Updated: 2019/07/24 17:07:00 by ssheba           ###   ########.fr       */
+/*   Created: 2019/04/02 11:29:21 by ssheba            #+#    #+#             */
+/*   Updated: 2019/04/02 12:17:29 by ssheba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "geometry.h"
+#include "libft.h"
 
-t_vector		add_vec(t_vector *a, t_vector *b)
+int		ft_isprint(int c)
 {
-	return (VECTOR(a->x + b->x, a->y + b->y, a->z + b->z));
+	return (' ' <= c && c <= 126);
 }

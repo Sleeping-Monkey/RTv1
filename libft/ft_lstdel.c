@@ -1,18 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sub_vec.c                                          :+:      :+:    :+:   */
+/*   ft_lstdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ssheba <ssheba@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ssheba <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/24 16:56:02 by ssheba            #+#    #+#             */
-/*   Updated: 2019/07/24 17:06:29 by ssheba           ###   ########.fr       */
+/*   Created: 2019/04/05 18:55:53 by ssheba            #+#    #+#             */
+/*   Updated: 2019/04/06 13:44:02 by ssheba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "geometry.h"
+#include "libft.h"
 
-t_vector		sub_vec(t_vector *a, t_vector *b)
+void	ft_lstdel(t_list **alst, void (*del)(void *, size_t))
 {
-	return (VECTOR(a->x - b->x, a->y - b->y, a->z - b->z));
+	if (alst == NULL || *alst == NULL || del == NULL)
+		return ;
+	ft_lstdel(&(*alst)->next, del);
+	ft_lstdelone(alst, del);
 }

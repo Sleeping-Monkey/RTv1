@@ -1,18 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   scalar_prod.c                                      :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ssheba <ssheba@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ssheba <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/24 16:30:29 by ssheba            #+#    #+#             */
-/*   Updated: 2019/07/24 16:32:38 by ssheba           ###   ########.fr       */
+/*   Created: 2019/04/02 13:24:24 by ssheba            #+#    #+#             */
+/*   Updated: 2019/04/02 13:29:45 by ssheba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "geometry.h"
+#include "libft.h"
 
-t_real	scalar_prod(t_vector *a, t_vector *b)
+int		ft_strcmp(const char *s1, const char *s2)
 {
-	return (a->x * b->x + a->y * b->y + a->z * b->z);
+	int	i;
+
+	i = 0;
+	while (s1[i] != 0 && s1[i] == s2[i])
+		i++;
+	return ((int)((unsigned char)s1[i] - (unsigned char)s2[i]));
 }
