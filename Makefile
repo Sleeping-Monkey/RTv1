@@ -6,7 +6,7 @@
 #    By: ssheba <ssheba@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/07/22 13:30:17 by ssheba            #+#    #+#              #
-#    Updated: 2019/08/09 13:04:06 by ssheba           ###   ########.fr        #
+#    Updated: 2019/08/09 14:54:24 by ssheba           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,13 +30,14 @@ INC			=	$(addprefix $(INC_DIR)/, $(INC_FILES))
 
 LIBFT_DIR	=	./libft
 LIBFT		=	$(LIBFT_DIR)/libft.a
+FRAMEWORK	=	~/Library/Frameworks/SDL2.framework
 
 INCLUDES	=	-I ./Frameworks/SDL2.framework/Versions/A/Headers -I $(INC_DIR) -I $(LIBFT_DIR)
 FLAGS		=	-Wall -Wextra -Werror $(INCLUDES) 
 
 all: $(NAME)
 
-$(NAME): $(LIBFT) $(OBJ) 
+$(NAME): $(LIBFT) $(OBJ) $(FRAMEWORK)
 	gcc $(FLAGS) -o $(NAME) $(OBJ) $(LIBFT) -F ./Frameworks/ -framework SDL2 -lpthread
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(INC)
@@ -45,6 +46,9 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(INC)
 
 $(LIBFT) : FAKE
 	$(MAKE) -C $(LIBFT_DIR)
+
+$(FRAMEWORK) :
+	cp -r ./Frameworks ~/Library/
 
 clean:
 	$(MAKE) -C $(LIBFT_DIR) clean
