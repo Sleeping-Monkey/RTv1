@@ -13,7 +13,6 @@
 #ifndef MY_SDL_H
 # define MY_SDL_H
 
-# include "SDL.h"
 # include "geometry.h"
 
 # define WIN_X	1000

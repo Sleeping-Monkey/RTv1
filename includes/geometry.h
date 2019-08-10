@@ -19,7 +19,11 @@
 # include <time.h>
 # include <pthread.h>
 
-# include "SDL.h"
+# ifdef __APPLE__
+#  include "SDL.h"
+# else
+#  include <SDL2/SDL.h>
+# endif
 # include "mat.h"
 
 typedef struct	s_color
