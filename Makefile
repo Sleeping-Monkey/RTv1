@@ -32,22 +32,30 @@ LIBFT_DIR	=	./libft
 LIBFT		=	$(LIBFT_DIR)/libft.a
 FRAMEWORK	=	~/Library/Frameworks/SDL2.framework
 
-INCLUDES	=	-I ./Frameworks/SDL2.framework/Versions/A/Headers -I $(INC_DIR) -I $(LIBFT_DIR)
+OS			:=	$(shell uname -s)
+
+ifeq ($(OS), Linux)
+	INCLUDES	=	-I $(INC_DIR) -I $(LIBFT_DIR)
+	LINK		=	-lpthread -lSDL2 -lm
+else
+	INCLUDES	=	-I ./Frameworks/SDL2.framework/Versions/A/Headers -I $(INC_DIR) -I $(LIBFT_DIR)
+	LINK		=	-F ./Frameworks/ -framework SDL2 -lpthread
+endif
 FLAGS		=	-Wall -Wextra -Werror $(INCLUDES) 
 
 all: $(NAME)
 
-$(NAME): $(LIBFT) $(OBJ) $(FRAMEWORK)
-	gcc $(FLAGS) -o $(NAME) $(OBJ) $(LIBFT) -F ./Frameworks/ -framework SDL2 -lpthread
+$(NAME): $(LIBFT) $(OBJ)
+	gcc $(FLAGS) -o $(NAME) $(OBJ) $(LIBFT) $(LINK)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(INC)
 	mkdir -p $(OBJ_DIR)
 	gcc -c $(FLAGS) -o $@ $<
 
-$(LIBFT) : FAKE
+$(LIBFT): FAKE
 	$(MAKE) -C $(LIBFT_DIR)
 
-$(FRAMEWORK) :
+$(FRAMEWORK):
 	cp -r ./Frameworks ~/Library/
 
 clean:
