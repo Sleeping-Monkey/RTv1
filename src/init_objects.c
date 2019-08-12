@@ -16,20 +16,22 @@ int	init_objects(t_sdl *win)
 {
 //	printf("sphere - (%Lf, %Lf)\n", WIN_X / 3.0L, WIN_Y * 2.0L / 3.0);
 	srandom(time(NULL));
-//	if (!(win->mas[0] = create_plane(VEC(0, WIN_Y * 0.9, 700), VEC(0, -1, 0), COLOR(0, 0, 255, 0), -1)))
-//		return (0);
-//	if (!(win->mas[1] = create_plane(VEC(0, 0, 1000), VEC(0, 0, -1), COLOR(0, 0, 255, 0), -1)))
-//		return (0);
-//	if (!(win->mas[2] = create_plane(VEC(WIN_X * 0.9, WIN_Y * 0.9, 0), VEC(-1, 0, 0), COLOR(0, 0, 255, 0), -1)))
-//		return (0);
-//	if (!(win->mas[0] = create_cylinder(VEC(0, 500, 200), VEC(1, 1, 0), 10, COLOR(150, 0, 0, 0), 10)))
-//		return (0);
+	if (!(win->mas[0] = create_plane(VEC(0, WIN_Y * 0.9, 700), VEC(0, -1, 0), COLOR(0, 0, 255, 0), -1)))
+		return (0);
+	if (!(win->mas[1] = create_plane(VEC(0, 0, 1000), VEC(0, 0, -1), COLOR(0, 0, 255, 0), -1)))
+		return (0);
+	if (!(win->mas[2] = create_plane(VEC(WIN_X * 0.9, WIN_Y * 0.9, 0), VEC(-1, 0, 0), COLOR(0, 0, 255, 0), -1)))
+		return (0);
+	if (!(win->mas[3] = create_plane(VEC(0, WIN_Y * 0.9, 500), VEC(1, -1, 0), COLOR(0, 0, 255, 0), -1)))
+		return (0);
+	if (!(win->mas[4] = create_cylinder(VEC(0, 200, 200), VEC(0, 1, 0), 10, COLOR(150, 0, 0, 0), 10)))
+		return (0);
 //	if (!(win->mas[1] = create_cylinder(VEC(0, 100, 300), VEC(0, 1, 0), 10, COLOR(0, 150, 0, 0), 10)))
 //		return (0);
 //	if (!(win->mas[2] = create_cylinder(VEC(10, 50, 1000), VEC(1, 0, 0), 100, COLOR(0, 0, 150, 0), 10)))
 //		return (0);
-	if (!(win->mas[0] = create_cylinder(VEC(WIN_X * 0.5, WIN_Y * 0.5, 10), VEC(1, 1, 0), WIN_X * 0.1, COLOR(155, 0, 150, 0), 1)))
-		return (0);
+//	if (!(win->mas[0] = create_cylinder(VEC(WIN_X * 0.5, WIN_Y * 0.5, 10), VEC(1, 1, 0), WIN_X * 0.1, COLOR(155, 0, 150, 0), 1)))
+//		return (0);
 //	if (!(win->mas[0] = create_cylinder(VEC(WIN_X * 0.5, WIN_Y * 0.5, 10), VEC(0, 1, 0), WIN_X * 0.1, COLOR(155, 0, 150, 0), 1)))
 //		return (0);
 //	if (!(win->mas[2] = create_cylinder(VEC(WIN_X * 0.5, WIN_Y * 0.5, 10), VEC(0, 0, 1), WIN_X * 0.1, COLOR(155, 0, 150, 0), 1)))
@@ -48,6 +50,6 @@ int	init_objects(t_sdl *win)
 //		return (0);
 //	if (!(win->mas[4] = create_plane(VECTOR(0, WIN_Y - 10, 700), VECTOR(0, -1, 0), COLOR(0, 255, 0, 0), -1)))
 //		return (0);	
-	win->obj_size = 1;
+	win->obj_size = 5;
 	return (1);
 }

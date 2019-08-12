@@ -15,8 +15,8 @@
 
 # include "geometry.h"
 
-# define WIN_X	1000
-# define WIN_Y	1000
+# define WIN_X	500
+# define WIN_Y	500
 
 void			set_pixel(t_sdl *win, t_point *pos);
 

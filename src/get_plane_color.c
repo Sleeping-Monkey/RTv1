@@ -25,6 +25,7 @@ t_color	get_plane_color(void *data, t_vec3 *pos, t_sdl *win, size_t id)
 		m3v3_mul(&plane->inv_axis, &plane->norm, pnv + 1);
 		v3_sub(&win->view->o, pos, pnv + 2);
 		i = get_lighting(win, pnv, plane->reflection, id);
+//printf("COLOR: p = (%Lf, %Lf, %Lf), n = (%Lf, %Lf, %Lf), v = (%Lf, %Lf, %Lf), i = %Lf\n", pnv[0].x, pnv[0].y, pnv[0].z, pnv[1].x, pnv[1].y, pnv[1].z, pnv[2].x, pnv[2].y, pnv[2].z, i);
 		return (COLOR(i * plane->color.r, i * plane->color.g, i * plane->color.b, plane->color.a));
 	}
 	if (win->lamp_size && win->lamp[0].type == AMBIENT)
