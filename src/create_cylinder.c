@@ -6,7 +6,7 @@
 /*   By: ssheba <ssheba@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 10:53:54 by ssheba            #+#    #+#             */
-/*   Updated: 2019/08/09 12:25:43 by ssheba           ###   ########.fr       */
+/*   Updated: 2019/08/13 15:38:48 by ssheba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,10 @@ static void	init_axis(t_cylinder *cylinder, t_vec3 *o, t_vec3 *k)
 	t_vec3	j;
 
 (void)o;
-	if (!k->z)
-		i = VEC(0, 0, 1);
-	else if (!k->y)
-		i = VEC(0, 1, 0);
-	else if (!k->x)
-		i = VEC(1, 0, 0);
+	if (k->z * k->z != 1)
+			i = VEC((k->x * k->x * k->z + k->y * k->y) / (k->z * k->z - 1), (k->x * k->y * k->z + k->y * k->x) / (k->z * k->z - 1), k->x);
 	else
-		i = VEC(k->x, k->y, -(k->x * k->x + k->y * k->y) / k->z);
+		i = VEC(1, 0, 0);
 	v3_norm(&i, &i);
 	v3_cross(k, &i, &j);
 	cylinder->axis.r[0][0] = i.x;
