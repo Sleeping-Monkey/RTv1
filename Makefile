@@ -6,7 +6,7 @@
 #    By: ssheba <ssheba@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/07/22 13:30:17 by ssheba            #+#    #+#              #
-#    Updated: 2019/08/09 14:54:24 by ssheba           ###   ########.fr        #
+#    Updated: 2019/08/13 16:04:21 by ssheba           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,8 @@ SRC_FILES	=	get_sphere_color.c create_sphere.c init_objects.c set_pixel.c \
 				trace.c event.c main.c sphere_intersection.c finish.c start.c \
 				get_lighting.c init_shine.c create_plane.c get_plane_color.c \
 				plane_intersection.c create_cylinder.c cylinder_intersection.c \
-				get_cylinder_color.c mat4.c mat4_op.c vec3_op.c vec3.c create_person.c
+				get_cylinder_color.c mat4.c mat4_op.c vec3_op.c vec3.c \
+				create_person.c create_cone.c cone_intersection.c get_cone_color.c
 OBJ_FILES	=	$(SRC_FILES:.c=.o)
 INC_FILES	=	my_sdl.h geometry.h mat.h
 

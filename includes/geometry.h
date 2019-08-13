@@ -6,7 +6,7 @@
 /*   By: ssheba <ssheba@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/23 16:16:46 by ssheba            #+#    #+#             */
-/*   Updated: 2019/08/08 10:44:04 by ssheba           ###   ########.fr       */
+/*   Updated: 2019/08/13 15:46:58 by ssheba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,15 @@ typedef struct	s_cylinder
 	int			reflection;
 }				t_cylinder;
 
+typedef struct	s_cone
+{
+	t_mat3		axis;
+	t_mat3		inv_axis;
+	t_vec3		o;
+	t_real		radius;
+	t_color		color;
+	int			reflection;
+}				t_cone;
 
 typedef enum	e_type_shine
 {
@@ -148,6 +157,10 @@ int				plane_intersection(void *data, t_ray *view, t_vec3 *pos, t_real *t);
 t_object		*create_cylinder(t_vec3 start, t_vec3 way, t_real r, t_color color, int ref);
 t_color			get_cylinder_color(void *data, t_vec3 *pos, t_sdl *win, size_t id);
 int				cylinder_intersection(void *data, t_ray *view, t_vec3 *pos, t_real *t);
+
+t_object		*create_cone(t_vec3 start, t_vec3 way, t_real r, t_color color, int ref);
+t_color			get_cone_color(void *data, t_vec3 *pos, t_sdl *win, size_t id);
+int				cone_intersection(void *data, t_ray *view, t_vec3 *pos, t_real *t);
 
 void			init_shine(t_sdl *win, int count);
 t_real			get_lighting(t_sdl *win, t_vec3 *pnv, int power, size_t id);
