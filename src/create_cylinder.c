@@ -6,7 +6,7 @@
 /*   By: ssheba <ssheba@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 10:53:54 by ssheba            #+#    #+#             */
-/*   Updated: 2019/08/13 15:38:48 by ssheba           ###   ########.fr       */
+/*   Updated: 2019/08/14 18:22:30 by ssheba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,20 @@ static void	init_axis(t_cylinder *cylinder, t_vec3 *o, t_vec3 *k)
 {
 	t_vec3	i;
 	t_vec3	j;
+	t_real	a;
+	t_real	b;
 
 (void)o;
-	if (k->z * k->z != 1)
-			i = VEC((k->x * k->x * k->z + k->y * k->y) / (k->z * k->z - 1), (k->x * k->y * k->z + k->y * k->x) / (k->z * k->z - 1), k->x);
+	if (k->y * k->z != -1)
+	{
+		b = (k->x * k->x * k->y * k->y + k->y + k->y * k->y * k->z) / (k->x * k->x + (k->y * k->z + 1) * (k->y * k->z + 1));
+		a = (k->x * k->y * k->y - b * k->x) / (1 + k->y * k->z);
+		j = VEC(a, b, k->y);
+	}
 	else
-		i = VEC(1, 0, 0);
-	v3_norm(&i, &i);
-	v3_cross(k, &i, &j);
+		j = VEC(1, 0, 0);
+	v3_norm(&j, &j);
+	v3_cross(&j, k, &i);
 	cylinder->axis.r[0][0] = i.x;
 	cylinder->axis.r[1][0] = i.y;
 	cylinder->axis.r[2][0] = i.z;
