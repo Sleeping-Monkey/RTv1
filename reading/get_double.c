@@ -6,13 +6,13 @@
 /*   By: gquence <gquence@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/09 16:52:09 by gquence           #+#    #+#             */
-/*   Updated: 2019/08/10 16:26:17 by gquence          ###   ########.fr       */
+/*   Updated: 2019/08/15 14:53:46 by gquence          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "reading.h"
 #include "libft.h"
-#include <stdio.h>
+#include "geometry.h"
 
 static double   get_mod(char *str)
 {
@@ -73,14 +73,4 @@ long double get_ldouble(char *str)
 	if (isposit)
 		res = -res;
 	return (res);
-}
-
-void	print_vector(t_vec3 vect)
-{
-	printf("vector: x=%LF y=%LF z=%LF\n", vect.x, vect.y, vect.z);
-}
-
-void	print_color(t_color color)
-{
-	printf("color: r=%d g=%d b=%d a=%d\n", (int)color.r, (int)color.g, (int)color.b, (int)color.a);
 }
