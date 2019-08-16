@@ -6,7 +6,11 @@
 /*   By: gquence <gquence@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/24 17:57:37 by ssheba            #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2019/08/16 19:13:19 by gquence          ###   ########.fr       */
+=======
+/*   Updated: 2019/08/16 11:29:27 by ssheba           ###   ########.fr       */
+>>>>>>> f7afd081f7528ba4c6a6e1fab5a7180751787597
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +28,7 @@ int	init_objects(t_sdl *win)
 		return (0);
 	if (!(win->mas[3] = create_plane(VEC(0, WIN_Y * 0.9, 500), VEC(1, -1, 0), COLOR(0, 0, 255, 0), -1)))
 		return (0);
-	if (!(win->mas[4] = create_cylinder(VEC(WIN_X * 0.5, WIN_Y * 0.5, 50), VEC(1, 1, 0), 20, COLOR(150, 0, 0, 0), 10)))
+	if (!(win->mas[4] = create_cone(VEC(WIN_X * 0.5, WIN_Y * 0.5, 50), VEC(1, 1, 0), 1, COLOR(150, 0, 0, 0), 10)))
 		return (0);
 //	if (!(win->mas[1] = create_cylinder(VEC(0, 100, 300), VEC(0, 1, 0), 10, COLOR(0, 150, 0, 0), 10)))
 //		return (0);

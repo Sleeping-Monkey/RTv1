@@ -6,24 +6,42 @@
 /*   By: ssheba <ssheba@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/13 15:47:11 by ssheba            #+#    #+#             */
-/*   Updated: 2019/08/13 16:04:44 by ssheba           ###   ########.fr       */
+/*   Updated: 2019/08/16 11:28:51 by ssheba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "geometry.h"
 
-static void	init_axis(t_cone *cone, t_vec3 *o, t_vec3 *k)
+static void	get_ijk(t_vec3 *i, t_vec3 *j, t_vec3 *k)
+{
+	if ((k->x != 0 && k->z != 0) || k->y * k->y == 1 || k->z * k->z == 1)
+	{
+		if (k->y * k->y == 1 || k->z * k->z == 1)
+			*j = VEC(0, k->z, k->y);
+		else if (k->y == 0)
+			*j = VEC(0, -1, 0);
+		else
+			*j = VEC(k->x / (1 + k->z), (k->y - k->z - 1) / (1 + k->z), k->y);
+		v3_cross(j, k, i);
+	}
+	else
+	{
+		if (k->x * k->x == 1)
+			*i = VEC(0, 0, k->x);
+		else if (k->x == 0)
+			*i = VEC(-1, 0, 0);
+		else
+			*i = VEC(-k->y * k->y, k->x * k->y, k->x);
+		v3_cross(k, i, j);
+	}
+}
+
+static void	init_axis(t_cone *cone, t_vec3 *k)
 {
 	t_vec3	i;
 	t_vec3	j;
 
-(void)o;
-	if (k->z * k->z != 1)
-			i = VEC((k->x * k->x * k->z + k->y * k->y) / (k->z * k->z - 1), (k->x * k->y * k->z + k->y * k->x) / (k->z * k->z - 1), k->x);
-	else
-		i = VEC(1, 0, 0);
-	v3_norm(&i, &i);
-	v3_cross(k, &i, &j);
+	get_ijk(&i, &j, k);
 	cone->axis.r[0][0] = i.x;
 	cone->axis.r[1][0] = i.y;
 	cone->axis.r[2][0] = i.z;
@@ -51,7 +69,7 @@ t_object	*create_cone(t_vec3 start, t_vec3 way, t_real r, t_color color, int ref
 		return (NULL);
 	}
 	v3_norm(&way, &way);
-	init_axis(new_cone, &start, &way);
+	init_axis(new_cone, &way);
 	m3_inv(&new_cone->axis, &new_cone->inv_axis);
 //	printf("[%Lf, %Lf, %Lf]\n", new_cylinder->inv_axis.r[0][0], new_cylinder->inv_axis.r[0][1], new_cylinder->inv_axis.r[0][2]);
 //	printf("[%Lf, %Lf, %Lf]\n", new_cylinder->inv_axis.r[1][0], new_cylinder->inv_axis.r[1][1], new_cylinder->inv_axis.r[1][2]);
