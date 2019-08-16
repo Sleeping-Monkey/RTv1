@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   start.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ssheba <ssheba@student.42.fr>              +#+  +:+       +#+        */
+/*   By: gquence <gquence@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/23 14:12:03 by ssheba            #+#    #+#             */
-/*   Updated: 2019/08/09 09:43:35 by ssheba           ###   ########.fr       */
+/*   Updated: 2019/08/16 19:07:49 by gquence          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,10 @@ void	start(void)
 		printf("Error 1\n");
 		return ;
 	}
+	write(1, "1", 1);
 	if (!(init_objects(&win)))
 		finish(&win);
+	write(1, "2", 1);
 	win.img.img = SDL_GetWindowSurface(win.win);
 	SDL_FillRect(win.img.img, NULL, SDL_MapRGBA(win.img.img->format, 0x00, 0xFF, 0x00, 0x00));
 	SDL_UpdateWindowSurface(win.win);

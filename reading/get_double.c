@@ -6,13 +6,12 @@
 /*   By: gquence <gquence@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/09 16:52:09 by gquence           #+#    #+#             */
-/*   Updated: 2019/08/15 14:53:46 by gquence          ###   ########.fr       */
+/*   Updated: 2019/08/16 17:27:40 by gquence          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "reading.h"
 #include "libft.h"
-#include "geometry.h"
 
 static double   get_mod(char *str)
 {

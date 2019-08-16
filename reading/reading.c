@@ -1,17 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   reading.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gquence <gquence@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/09 15:59:21 by gquence           #+#    #+#             */
-/*   Updated: 2019/08/16 17:04:12 by gquence          ###   ########.fr       */
+/*   Updated: 2019/08/16 17:29:27 by gquence          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "reading.h"
-#include "geometry.h"
 #include "libft.h"
 #include <unistd.h>
 #include <fcntl.h>
@@ -42,16 +41,16 @@ int check_figuretype(char *str)
 
 /*
 ** template of filling file:
-
-vectors: x y z
-t_color: r g b a
-
-#1
-"plane
-pos: 1.0 2.0 3.0
-norm: 0 0 1
-color: 0-255 0-255 0-255 0-255
-refl: 1-3"
+**
+**vectors: x y z
+**t_color: r g b a
+**
+**#1
+**"plane
+**pos: 1.0 2.0 3.0
+**norm: 0 0 1
+**color: 0-255 0-255 0-255 0-255
+**refl: 1-3"
 */
 
 t_object	*get_plane(const char **splitted)
@@ -186,7 +185,6 @@ t_object *read_objinfo(char *filename)
         ft_putendl("filename is not found");
     return (NULL);
 }
-
 
 int main(int ac, char **av)
 {
