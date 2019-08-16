@@ -6,7 +6,7 @@
 /*   By: gquence <gquence@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/09 15:59:21 by gquence           #+#    #+#             */
-/*   Updated: 2019/08/15 15:01:45 by gquence          ###   ########.fr       */
+/*   Updated: 2019/08/16 17:04:12 by gquence          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,12 +114,49 @@ t_object	*get_sphere(const char **splitted)
 	return (create_sphere(center, rad, color, refl));
 }
 
+t_object	*get_cylinder(const char **splitted)
+{
+	int		i;
+	char	*str;
+	t_vec3	start;
+	t_vec3	way;
+	t_real	rad;
+	t_color	color;
+	int		refl;
+
+	i = 0;
+	while (i < 4)
+	{
+		str = (char *)splitted[i];
+		if (ft_strcmp(str, "start\0") == ':')
+			start = get_vector(str + 6);
+		else if (ft_strcmp(str, "way\0") == ':')
+			way = get_vector(str + 4);
+		else if (ft_strcmp(str, "rad\0") == ':')
+			rad = get_ldouble(str + 4);
+		else if (ft_strcmp(str, "color\0") == ':')
+			color = get_color(str + 6, &color);
+		else if (ft_strcmp(str, "refl\0") == ':')
+			refl = ft_atoi(str + 5);
+		i++;
+	}
+	print_vector(start);
+	print_vector(way);
+	printf("rad = %LF\n", rad);
+	print_color(color);
+	printf("refl = %d", refl);
+	return (create_cylinder(start, way, rad, color, refl));
+}
+
+
 t_object    *get_fig_info(const int figtype, const char **splitted)
 {
     if (figtype == 1)
         return (get_plane(splitted));
     if (figtype == 2)
         return (get_sphere(splitted));
+	if (figtype == 3)
+		return (get_cylinder(splitted));
 	return (NULL);
 }
 
@@ -149,10 +186,11 @@ t_object *read_objinfo(char *filename)
         ft_putendl("filename is not found");
     return (NULL);
 }
-/*
+
+
 int main(int ac, char **av)
 {
 	if (ac == 2)
 		read_objinfo(av[1]);
 	return (0);	
-}*/
+}
