@@ -21,7 +21,8 @@ SRC_FILES	=	get_sphere_color.c create_sphere.c init_objects.c set_pixel.c \
 				get_lighting.c init_shine.c create_plane.c get_plane_color.c \
 				plane_intersection.c create_cylinder.c cylinder_intersection.c \
 				get_cylinder_color.c mat4.c mat4_op.c vec3_op.c vec3.c \
-				create_person.c create_cone.c cone_intersection.c get_cone_color.c
+				create_person.c create_cone.c cone_intersection.c \
+				get_cone_color.c mat3_rot.c
 OBJ_FILES	=	$(SRC_FILES:.c=.o)
 INC_FILES	=	my_sdl.h geometry.h mat.h
 
