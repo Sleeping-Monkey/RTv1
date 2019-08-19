@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   reading.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gquence <gquence@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ssheba <ssheba@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/09 15:59:21 by gquence           #+#    #+#             */
-/*   Updated: 2019/08/16 17:29:27 by gquence          ###   ########.fr       */
+/*   Updated: 2019/08/19 17:24:13 by ssheba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -186,9 +186,9 @@ t_object *read_objinfo(char *filename)
     return (NULL);
 }
 
-int main(int ac, char **av)
+/* int main(int ac, char **av)
 {
 	if (ac == 2)
 		read_objinfo(av[1]);
 	return (0);	
-}
+}*/
