@@ -6,7 +6,7 @@
 /*   By: ssheba <ssheba@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/23 14:12:03 by ssheba            #+#    #+#             */
-/*   Updated: 2019/08/19 17:30:02 by ssheba           ###   ########.fr       */
+/*   Updated: 2019/08/21 17:59:52 by ssheba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ void	start(char *file_name)
 	init_shine(&win, 10);
 	win.view = create_person(VEC(WIN_X * 0.5, WIN_Y * 0.5, -WIN_X), VEC(WIN_X * 0.5 + 1, WIN_Y * 0.5, -WIN_X), \
 	VEC(WIN_X * 0.5, WIN_Y * 0.5 + 1, -WIN_X));
-	printf("start init is ok\n");
+	trace(&win);
+	SDL_UpdateWindowSurface(win.win);
 	event(&win);
 //	win.img.pixels = (unsigned char *)win.img.img->pi
 }
