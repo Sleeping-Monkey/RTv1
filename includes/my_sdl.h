@@ -6,7 +6,7 @@
 /*   By: ssheba <ssheba@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/23 13:50:57 by ssheba            #+#    #+#             */
-/*   Updated: 2019/08/19 17:28:29 by ssheba           ###   ########.fr       */
+/*   Updated: 2019/08/22 17:37:17 by ssheba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,12 @@
 
 void			set_pixel(t_sdl *win, t_point *pos);
 
-void			start(char *file_name);
+void			start(char **file_name, int size);
 void			finish(t_sdl *win);
 
 void			event(t_sdl *win);
 
-int				init_objects(t_sdl *win, char *file_name);
+int				init_objects(t_sdl *win, char **file_name, int size);
 
 void			trace(t_sdl *win);
 

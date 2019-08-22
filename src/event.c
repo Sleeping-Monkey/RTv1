@@ -6,12 +6,12 @@
 /*   By: ssheba <ssheba@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/23 16:19:32 by ssheba            #+#    #+#             */
-/*   Updated: 2019/08/21 18:00:39 by ssheba           ###   ########.fr       */
+/*   Updated: 2019/08/22 18:13:57 by ssheba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "my_sdl.h"
-#define TRANSLATION 100
+#define TRANSLATION 40
 
 void	event(t_sdl *win)
 {
