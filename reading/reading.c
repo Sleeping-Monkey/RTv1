@@ -6,7 +6,7 @@
 /*   By: gquence <gquence@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/09 15:59:21 by gquence           #+#    #+#             */
-/*   Updated: 2019/08/19 23:15:28 by gquence          ###   ########.fr       */
+/*   Updated: 2019/08/26 18:40:55 by gquence          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 
 void   errs_exit(char *err, void *ptr)
 {
-    if (ptr)
-        free(ptr);
+    //if (ptr)
+   //     free(ptr);
     if (!ft_strcmp("check_figtype", err))
         ft_putendl("There is no figure like this!(in using: cylinder, sphere, plane, cone)");
     else if (!ft_strcmp("nofile", err))
@@ -82,7 +82,7 @@ t_object	*get_plane(const char **splitted)
 	print_vector(norm);
 	print_color(color);
 	printf("refl = %d", refl);
-	return (create_plane(pos, norm, color, refl));
+//	return (create_plane(pos, norm, color, refl));
 }
 
 t_object	*get_sphere(const char **splitted)
@@ -112,7 +112,7 @@ t_object	*get_sphere(const char **splitted)
 	printf("rad = %LF\n", rad);
 	print_color(color);
 	printf("refl = %d", refl);
-	return (create_sphere(center, rad, color, refl));
+//	return (create_sphere(center, rad, color, refl));
 }
 
 t_object	*get_cylinder(const char **splitted)
@@ -126,7 +126,7 @@ t_object	*get_cylinder(const char **splitted)
 	int		refl;
 
 	i = 0;
-	while (i < 4)
+	while (i < 5)
 	{
 		str = (char *)splitted[i];
 		if (ft_strcmp(str, "start\0") == ':')
@@ -146,7 +146,7 @@ t_object	*get_cylinder(const char **splitted)
 	printf("rad = %LF\n", rad);
 	print_color(color);
 	printf("refl = %d", refl);
-	return (create_cylinder(start, way, rad, color, refl));
+//	return (create_cylinder(start, way, rad, color, refl));
 }
 
 t_object	*get_cone(const char **splitted)
@@ -176,7 +176,32 @@ t_object	*get_cone(const char **splitted)
 	print_vector(way);
 	print_color(color);
 	printf("refl = %d", refl);
-	return (create_cone(start, way, color, refl));
+//	return (create_cone(start, way, color, refl));
+}
+
+t_shine	get_shine(const char **splitted)
+{
+	int		i;
+	char	*str;
+	t_shine	res;
+	
+	i = 0;
+	while (i < 3)
+	{
+		str = (char *)splitted[i];
+		if (ft_strcmp(str, "shine\0") == ':')
+			res.type = ft_atoi(str + 6);
+		else if (ft_strcmp(str, "pos\0") == ':')
+			res.pos = get_vector(str + 4);
+		else if (ft_strcmp(str, "bright\0") == ':')
+			res.bright = get_ldouble(str + 7);
+		i++;
+	}
+	printf("type = %d\n", res.type);
+	print_vector(res.pos);
+	printf("bright = %LF", res.bright);
+//	return (res);
+//	return (create_cone(start, way, color, refl));
 }
 
 t_object    *get_fig_info(const int figtype, const char **splitted)
@@ -208,9 +233,9 @@ t_object *read_objinfo(char *filename)
 			return (NULL);
 		str[tmp] = 0;
 		splitted_strs = ft_strsplit(str, '\n');
-        if (!(tmp = check_figuretype(splitted_strs[0])))
+    	if (!(tmp = check_figuretype(splitted_strs[0])))
                 errs_exit("check_figtype", str);
-        obj = get_fig_info(tmp, (const char **)&splitted_strs[1]);
+		obj = get_fig_info(tmp, (const char **)&splitted_strs[1]);
 		free_char_arr(&splitted_strs);
 		return (obj);
     }

@@ -6,12 +6,13 @@
 /*   By: gquence <gquence@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/15 14:36:56 by gquence           #+#    #+#             */
-/*   Updated: 2019/08/15 14:56:47 by gquence          ###   ########.fr       */
+/*   Updated: 2019/08/23 20:02:36 by gquence          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "geometry.h"
 #include "reading.h"
+#include "libft.h"
 
 void	print_vector(t_vec3 vect)
 {
