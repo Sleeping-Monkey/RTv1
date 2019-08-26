@@ -1,5 +1,11 @@
 sphere
 center: 500 500 700
 rad: 100
-color: 150 0 0 0
+color: 0 0 0 0
+refl: 1
+>>
+sphere
+center: 500 500 700
+rad: 100
+color: 0 0 0 0
 refl: 1

@@ -6,24 +6,24 @@
 /*   By: gquence <gquence@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/09 16:52:09 by gquence           #+#    #+#             */
-/*   Updated: 2019/08/16 17:27:40 by gquence          ###   ########.fr       */
+/*   Updated: 2019/08/17 17:17:24 by gquence          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "reading.h"
 #include "libft.h"
 
-static double   get_mod(char *str)
+static double	get_mod(char *str)
 {
-	double  res;
-	double  counter;
+	double	res;
+	double	counter;
 
 	if (!str || !*str)
 		return (0.0);
 	res = 0.0;
 	counter = 10.0;
 	while (*str && ft_isdigit(*str))
-	{		
+	{
 		res += (double)(*str - '0') / counter;
 		counter *= 10.0;
 		str++;
@@ -31,11 +31,10 @@ static double   get_mod(char *str)
 	return (res);
 }
 
-static double   get_div(char **pstr)
+static double	get_div(char **pstr)
 {
-	double  res;
-	char    *str;
-
+	double	res;
+	char	*str;
 
 	if (!pstr || !*pstr || !**pstr)
 		return (0.0);
@@ -51,10 +50,10 @@ static double   get_div(char **pstr)
 	return (res);
 }
 
-long double get_ldouble(char *str)
+long double		get_ldouble(char *str)
 {
-	int         isposit;
-	long double res;
+	int			isposit;
+	long double	res;
 
 	if (!str || !*str)
 		return (0.0);
