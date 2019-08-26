@@ -47,6 +47,10 @@ t_mat3			*m3_copy(t_mat3 *m, t_mat3 *out);
 void			m3_zero(t_mat3 *m);
 t_real			m3_det(t_mat3 *m);
 t_mat3			*m3_inv(t_mat3 *m, t_mat3 *out);
+void			m3_rotx(t_mat3 *m, t_real alpha);
+void			m3_roty(t_mat3 *m, t_real alpha);
+void			m3_rotz(t_mat3 *m, t_real alpha);
+t_mat3			*m3_trs(t_mat3 *m, t_mat3 *out);
 
 /*
 ** Vec3 ops

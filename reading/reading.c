@@ -3,10 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   reading.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gquence <gquence@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ssheba <ssheba@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/09 15:59:21 by gquence           #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2019/08/17 17:29:20 by gquence          ###   ########.fr       */
+=======
+<<<<<<< HEAD
+/*   Updated: 2019/08/26 18:40:55 by gquence          ###   ########.fr       */
+=======
+/*   Updated: 2019/08/21 17:40:19 by ssheba           ###   ########.fr       */
+>>>>>>> ea7ff655583bcd944a71fbbcb8c887dd2c2104b6
+>>>>>>> cf98c15545818802e27ea3cdf04cfcf963801e12
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +25,7 @@
 
 void		errs_exit(char *err, void *ptr)
 {
+<<<<<<< HEAD
 	if (ptr)
 		free(ptr);
 	if (!ft_strcmp("check_figtype", err))
@@ -26,10 +35,22 @@ void		errs_exit(char *err, void *ptr)
 	else
 		return ;
 	exit(1);
+=======
+    //if (ptr)
+   //     free(ptr);
+    if (!ft_strcmp("check_figtype", err))
+        ft_putendl("There is no figure like this!(in using: cylinder, sphere, plane, cone)");
+    else if (!ft_strcmp("nofile", err))
+        ft_putendl("There is no file with this filename in this directory");
+    else
+        return ;
+    exit(1);   
+>>>>>>> cf98c15545818802e27ea3cdf04cfcf963801e12
 }
 
 int			check_figuretype(char *str)
 {
+<<<<<<< HEAD
 	if (!ft_strcmp(str, "plane"))
 		return (1);
 	if (!ft_strcmp(str, "sphere"))
@@ -37,6 +58,17 @@ int			check_figuretype(char *str)
 	if (!ft_strcmp(str, "cylinder"))
 		return (3);
 	return (0);
+=======
+    if (!ft_strcmp(str, "plane"))
+        return (1);
+    if (!ft_strcmp(str, "sphere"))
+        return (2);
+    if (!ft_strcmp(str, "cylinder"))
+        return (3);
+    if (!ft_strcmp(str, "cone"))
+        return (4);
+    return (0);
+>>>>>>> cf98c15545818802e27ea3cdf04cfcf963801e12
 }
 
 /*
@@ -82,7 +114,7 @@ t_object	*get_plane(const char **splitted)
 	print_vector(norm);
 	print_color(color);
 	printf("refl = %d", refl);
-	return (create_plane(pos, norm, color, refl));
+//	return (create_plane(pos, norm, color, refl));
 }
 
 t_object	*get_sphere(const char **splitted)
@@ -130,7 +162,7 @@ t_object	*get_cylinder(const char **splitted)
 	int		refl;
 
 	i = 0;
-	while (i < 4)
+	while (i < 5)
 	{
 		str = (char *)splitted[i];
 		if (ft_strcmp(str, "start\0") == ':')
@@ -157,6 +189,60 @@ t_object	*get_cylinder(const char **splitted)
 	return (create_cylinder(start, way, rad, color, refl));
 }
 
+t_object	*get_cone(const char **splitted)
+{
+	int		i;
+	char	*str;
+	t_vec3	start;
+	t_vec3	way;
+	t_color	color;
+	int		refl;
+
+	i = 0;
+	while (i < 4)
+	{
+		str = (char *)splitted[i];
+		if (ft_strcmp(str, "start\0") == ':')
+			start = get_vector(str + 6);
+		else if (ft_strcmp(str, "way\0") == ':')
+			way = get_vector(str + 4);
+		else if (ft_strcmp(str, "color\0") == ':')
+			color = get_color(str + 6, &color);
+		else if (ft_strcmp(str, "refl\0") == ':')
+			refl = ft_atoi(str + 5);
+		i++;
+	}
+	print_vector(start);
+	print_vector(way);
+	print_color(color);
+	printf("refl = %d", refl);
+	return (create_cone(start, way, color, refl));
+}
+
+t_shine	get_shine(const char **splitted)
+{
+	int		i;
+	char	*str;
+	t_shine	res;
+	
+	i = 0;
+	while (i < 3)
+	{
+		str = (char *)splitted[i];
+		if (ft_strcmp(str, "shine\0") == ':')
+			res.type = ft_atoi(str + 6);
+		else if (ft_strcmp(str, "pos\0") == ':')
+			res.pos = get_vector(str + 4);
+		else if (ft_strcmp(str, "bright\0") == ':')
+			res.bright = get_ldouble(str + 7);
+		i++;
+	}
+	printf("type = %d\n", res.type);
+	print_vector(res.pos);
+	printf("bright = %LF", res.bright);
+	return (res);
+//	return (create_cone(start, way, color, refl));
+}
 
 t_object	*get_fig_info(const int figtype, const char **splitted)
 {
@@ -166,6 +252,8 @@ t_object	*get_fig_info(const int figtype, const char **splitted)
 		return (get_sphere(splitted));
 	if (figtype == 3)
 		return (get_cylinder(splitted));
+	if (figtype == 4)
+		return (get_cone(splitted));
 	return (NULL);
 }
 
@@ -185,8 +273,13 @@ t_object	*read_objinfo(char *filename)
 			return (NULL);
 		str[tmp] = 0;
 		splitted_strs = ft_strsplit(str, '\n');
+<<<<<<< HEAD
 		if (!(tmp = check_figuretype(splitted_strs[0])))
 			errs_exit("check_figtype", str);
+=======
+    	if (!(tmp = check_figuretype(splitted_strs[0])))
+                errs_exit("check_figtype", str);
+>>>>>>> cf98c15545818802e27ea3cdf04cfcf963801e12
 		obj = get_fig_info(tmp, (const char **)&splitted_strs[1]);
 		free_char_arr(&splitted_strs);
 		return (obj);
@@ -196,9 +289,18 @@ t_object	*read_objinfo(char *filename)
 	return (NULL);
 }
 
+<<<<<<< HEAD
 int	main(int ac, char **av)
 {
 	if (ac == 2)
 		read_objinfo(av[1]);
 	return (0);
 }
+=======
+/* int main(int ac, char **av)
+{
+	if (ac == 2)
+		read_objinfo(av[1]);
+	return (0);	
+}*/
+>>>>>>> cf98c15545818802e27ea3cdf04cfcf963801e12

@@ -3,17 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   init_objects.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gquence <gquence@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ssheba <ssheba@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/24 17:57:37 by ssheba            #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2019/08/26 20:32:59 by gquence          ###   ########.fr       */
+=======
+/*   Updated: 2019/08/22 17:37:45 by ssheba           ###   ########.fr       */
+>>>>>>> cf98c15545818802e27ea3cdf04cfcf963801e12
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "my_sdl.h"
+#include "reading.h"
 
-int	init_objects(t_sdl *win)
+int	init_objects(t_sdl *win, char **file_name, int size)
 {
+<<<<<<< HEAD
 //	printf("sphere - (%Lf, %Lf)\n", WIN_X / 3.0L, WIN_Y * 2.0L / 3.0);
 	srandom(time(NULL));
 	if (!(win->mas[0] = create_plane(VEC(0, WIN_Y * 0.9, 700), VEC(0, -1, 0), COLOR(0, 0, 255, 0), -1)))
@@ -51,5 +57,19 @@ int	init_objects(t_sdl *win)
 //	if (!(win->mas[4] = create_plane(VECTOR(0, WIN_Y - 10, 700), VECTOR(0, -1, 0), COLOR(0, 255, 0, 0), -1)))
 //		return (0);	
 	win->obj_size = 4;
+=======
+	int	i;
+
+	i = 0;
+	if (!(win->mas = (t_object **)malloc(sizeof(t_object *) * size)))
+		return (0);
+	while (i < size)
+	{
+		if (!(win->mas[i] = read_objinfo(file_name[i])))
+			return (0);
+		i++;
+	}
+	win->obj_size = (size_t)size;
+>>>>>>> cf98c15545818802e27ea3cdf04cfcf963801e12
 	return (1);
 }

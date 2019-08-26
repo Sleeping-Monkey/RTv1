@@ -12,7 +12,7 @@
 
 #include "mat.h"
 
-t_mat3			*m3_mul(t_mat3 *a, t_mat3 *b, t_mat3 *out)
+t_mat3	*m3_mul(t_mat3 *a, t_mat3 *b, t_mat3 *out)
 {
 	int		r;
 	int		c;
@@ -40,7 +40,7 @@ t_mat3			*m3_mul(t_mat3 *a, t_mat3 *b, t_mat3 *out)
 	return (out);
 }
 
-t_vec3			*m3v3_mul(t_mat3 *a, t_vec3 *b, t_vec3 *out)
+t_vec3	*m3v3_mul(t_mat3 *a, t_vec3 *b, t_vec3 *out)
 {
 	t_vec3	b_copy;
 
@@ -53,7 +53,7 @@ t_vec3			*m3v3_mul(t_mat3 *a, t_vec3 *b, t_vec3 *out)
 	return (out);
 }
 
-t_mat3			*m3r_mul(t_mat3 *a, t_real r, t_mat3 *out)
+t_mat3	*m3r_mul(t_mat3 *a, t_real r, t_mat3 *out)
 {
 	t_mat3	a_copy;
 	int		i;
@@ -71,3 +71,4 @@ t_mat3			*m3r_mul(t_mat3 *a, t_real r, t_mat3 *out)
 	}	
 	return (out);
 }
+
