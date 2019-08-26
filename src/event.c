@@ -6,12 +6,12 @@
 /*   By: ssheba <ssheba@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/23 16:19:32 by ssheba            #+#    #+#             */
-/*   Updated: 2019/08/08 10:13:10 by ssheba           ###   ########.fr       */
+/*   Updated: 2019/08/22 18:13:57 by ssheba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "my_sdl.h"
-#define TRANSLATION 100
+#define TRANSLATION 40
 
 void	event(t_sdl *win)
 {
@@ -24,14 +24,22 @@ void	event(t_sdl *win)
 				finish(win);
 			if (win->e.type == SDL_KEYUP)
 			{
-				trace(win);
-				SDL_UpdateWindowSurface(win->win);
-		//		printf("OK: %d\n", win->e.key);
+			//	t_mat3	rot;
+
+				if (win->e.key.keysym.sym == SDLK_RETURN)
+				{
+					win->view->o.z = 0;
+					trace(win);
+					SDL_UpdateWindowSurface(win->win);
+				}
+			//	if (win->e.key.keysym.sym == SDLK_w)
+			//	{
+			//		
+			//	}
 			}
 			if (win->e.type == SDL_MOUSEWHEEL)
 			{
 				m3v3_mul(&win->view->axis, &win->view->o, &win->view->o);
-		//		printf("%d -- %d -- %d\n", win->e.button.windowID, win->e.button.which, win->e.button.state);
 				if (win->e.wheel.y > 0)
 					win->view->o.z += TRANSLATION;
 				else if (win->e.wheel.y < 0)

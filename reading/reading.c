@@ -3,10 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   reading.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gquence <gquence@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ssheba <ssheba@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/09 15:59:21 by gquence           #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2019/08/26 18:40:55 by gquence          ###   ########.fr       */
+=======
+/*   Updated: 2019/08/21 17:40:19 by ssheba           ###   ########.fr       */
+>>>>>>> ea7ff655583bcd944a71fbbcb8c887dd2c2104b6
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +116,7 @@ t_object	*get_sphere(const char **splitted)
 	printf("rad = %LF\n", rad);
 	print_color(color);
 	printf("refl = %d", refl);
-//	return (create_sphere(center, rad, color, refl));
+	return (create_sphere(center, rad, color, refl));
 }
 
 t_object	*get_cylinder(const char **splitted)
@@ -146,7 +150,7 @@ t_object	*get_cylinder(const char **splitted)
 	printf("rad = %LF\n", rad);
 	print_color(color);
 	printf("refl = %d", refl);
-//	return (create_cylinder(start, way, rad, color, refl));
+	return (create_cylinder(start, way, rad, color, refl));
 }
 
 t_object	*get_cone(const char **splitted)
@@ -176,7 +180,7 @@ t_object	*get_cone(const char **splitted)
 	print_vector(way);
 	print_color(color);
 	printf("refl = %d", refl);
-//	return (create_cone(start, way, color, refl));
+	return (create_cone(start, way, color, refl));
 }
 
 t_shine	get_shine(const char **splitted)
@@ -200,7 +204,7 @@ t_shine	get_shine(const char **splitted)
 	printf("type = %d\n", res.type);
 	print_vector(res.pos);
 	printf("bright = %LF", res.bright);
-//	return (res);
+	return (res);
 //	return (create_cone(start, way, color, refl));
 }
 
@@ -244,9 +248,9 @@ t_object *read_objinfo(char *filename)
     return (NULL);
 }
 
-int main(int ac, char **av)
+/* int main(int ac, char **av)
 {
 	if (ac == 2)
 		read_objinfo(av[1]);
 	return (0);	
-}
+}*/
