@@ -6,11 +6,11 @@
 /*   By: ssheba <ssheba@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/23 14:09:11 by ssheba            #+#    #+#             */
-/*   Updated: 2019/07/31 17:04:22 by ssheba           ###   ########.fr       */
+/*   Updated: 2019/08/27 18:02:32 by ssheba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "my_sdl.h"
+# include "geometry.h"
 
 void			set_pixel(t_sdl *win, t_point *pos)
 {

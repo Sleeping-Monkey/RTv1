@@ -6,11 +6,11 @@
 /*   By: ssheba <ssheba@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/23 14:17:29 by ssheba            #+#    #+#             */
-/*   Updated: 2019/08/27 16:46:59 by ssheba           ###   ########.fr       */
+/*   Updated: 2019/08/27 18:03:35 by ssheba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "my_sdl.h"
+#include "geometry.h"
 
 static void	free_objects(t_sdl *win)
 {
@@ -24,12 +24,18 @@ static void	free_objects(t_sdl *win)
 		i++;
 	}
 	free(win->mas);
+	i = 0;
+	while (i < win->lamp_size)
+	{
+		free(win->lamp[i]);
+		i++;
+	}
+	free(win->lamp);
 }
 
 void		finish(t_sdl *win)
 {
 	free_objects(win);
-	free(win->lamp);
 	free(win->view);
 	SDL_FreeSurface(win->img.img);
 	SDL_DestroyWindow(win->win);
@@ -39,6 +45,6 @@ void		finish(t_sdl *win)
 
 void		msg_finish(char *msg)
 {
-	ft_putendl_fd(2, msg);
+	ft_putendl_fd(msg, 2);
 	exit(1);
 }

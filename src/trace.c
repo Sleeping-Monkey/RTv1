@@ -6,11 +6,11 @@
 /*   By: ssheba <ssheba@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/25 10:35:35 by ssheba            #+#    #+#             */
-/*   Updated: 2019/08/08 10:08:13 by ssheba           ###   ########.fr       */
+/*   Updated: 2019/08/27 18:02:51 by ssheba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "my_sdl.h"
+#include "geometry.h"
 #define THREADS	WIN_Y
 
 void	*thread_func(void *f_all)

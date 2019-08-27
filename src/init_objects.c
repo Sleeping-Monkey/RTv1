@@ -3,14 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   init_objects.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gquence <gquence@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ssheba <ssheba@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/24 17:57:37 by ssheba            #+#    #+#             */
-/*   Updated: 2019/08/26 20:36:56 by gquence          ###   ########.fr       */
+/*   Updated: 2019/08/27 18:02:10 by ssheba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "my_sdl.h"
 #include "reading.h"
 
 int	init_objects(t_sdl *win, char **file_name, int size)

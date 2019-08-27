@@ -6,7 +6,7 @@
 /*   By: ssheba <ssheba@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/23 16:16:46 by ssheba            #+#    #+#             */
-/*   Updated: 2019/08/27 16:47:25 by ssheba           ###   ########.fr       */
+/*   Updated: 2019/08/27 18:23:55 by ssheba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,12 @@
 #  include <SDL2/SDL.h>
 # endif
 # include "mat.h"
+
+# define WIN_X	500
+# define WIN_Y	500
+# define USG_MSG    "Usage: ./RTv1 -p person_file -l shine_file_1 [shine_file_2 ...] -o obj_file_1 [obj_file_2 ...]"
+# define MEM_MSG    "No memory =("
+# define SDL_MSG    "It is SDL problem"
 
 typedef struct	s_color
 {
@@ -130,7 +136,7 @@ struct	s_sdl
 	SDL_Window		*win;
 	t_img			img;
 	SDL_Event		e;
-	t_shine			*lamp;
+	t_shine			**lamp;
 	size_t			lamp_size;
 	t_object		**mas;
 	size_t			obj_size;
@@ -166,5 +172,17 @@ void			init_shine(t_sdl *win, int count);
 t_real			get_lighting(t_sdl *win, t_vec3 *pnv, int power, size_t id);
 
 t_person		*create_person(t_vec3 o, t_vec3 x, t_vec3 y);
+
+void			set_pixel(t_sdl *win, t_point *pos);
+
+void			start(char **file_name, int size);
+void			finish(t_sdl *win);
+void		    msg_finish(char *msg);
+
+void			event(t_sdl *win);
+
+int				init_objects(t_sdl *win, char **file_name, int size);
+
+void			trace(t_sdl *win);
 
 #endif

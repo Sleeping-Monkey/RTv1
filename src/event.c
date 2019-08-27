@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   event.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gquence <gquence@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ssheba <ssheba@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/23 16:19:32 by ssheba            #+#    #+#             */
-/*   Updated: 2019/08/26 20:37:09 by gquence          ###   ########.fr       */
+/*   Updated: 2019/08/27 18:03:01 by ssheba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "my_sdl.h"
+#include "geometry.h"
 #define TRANSLATION 40
 
 void	event(t_sdl *win)

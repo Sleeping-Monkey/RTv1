@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "my_sdl.h"
+#include "geometry.h"
 
 int main(int argc, char **argv)
 {

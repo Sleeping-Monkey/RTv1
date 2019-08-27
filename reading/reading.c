@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   reading.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gquence <gquence@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ssheba <ssheba@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/09 15:59:21 by gquence           #+#    #+#             */
-/*   Updated: 2019/08/26 20:51:33 by gquence          ###   ########.fr       */
+/*   Updated: 2019/08/27 18:19:15 by ssheba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "reading.h"
-#include "libft.h"
 #include <unistd.h>
 #include <fcntl.h>
+#include "reading.h"
+#include "libft.h"
 
 void		errs_exit(char *err, void *ptr)
 {
@@ -192,30 +192,6 @@ t_object	*get_cone(const char **splitted)
 	return (create_cone(start, way, rad, color, refl));
 }
 
-t_shine	get_shine(const char **splitted)
-{
-	int		i;
-	char	*str;
-	t_shine	res;
-	
-	i = 0;
-	while (i < 3)
-	{
-		str = (char *)splitted[i];
-		if (ft_strcmp(str, "shine\0") == ':')
-			res.type = ft_atoi(str + 6);
-		else if (ft_strcmp(str, "pos\0") == ':')
-			res.pos = get_vector(str + 4);
-		else if (ft_strcmp(str, "bright\0") == ':')
-			res.bright = get_ldouble(str + 7);
-		i++;
-	}
-	printf("type = %d\n", res.type);
-	print_vector(res.pos);
-	printf("bright = %LF", res.bright);
-	return (res);
-}
-
 t_object	*get_fig_info(const int figtype, const char **splitted)
 {
 	if (figtype == 1)
@@ -232,7 +208,7 @@ t_object	*get_fig_info(const int figtype, const char **splitted)
 t_object	*read_objinfo(char *filename)
 {
 	int			fd;
-	char		str[200];
+	char		str[BUFF_SIZE + 1];
 	char		**splitted_strs;
 	int			tmp;
 	t_object	*obj;
@@ -241,18 +217,18 @@ t_object	*read_objinfo(char *filename)
 	{
 		if ((fd = open(filename, O_RDONLY)) < 0)
 			errs_exit("nofile", NULL);
-		if ((tmp = read(fd, &str, 199)) == -1)
+		if ((tmp = read(fd, &str, BUFF_SIZE)) == -1)
 			return (NULL);
 		str[tmp] = 0;
 		splitted_strs = ft_strsplit(str, '\n');
 		if (!(tmp = check_figuretype(splitted_strs[0])))
-			errs_exit("check_figtype", str);
+			msg_finish(ERR_FIG_MSG);
 		obj = get_fig_info(tmp, (const char **)&splitted_strs[1]);
 		free_char_arr(&splitted_strs);
 		return (obj);
 	}
 	else
-		ft_putendl("filename is not found");
+		msg_finish("filename is not found");
 	return (NULL);
 }
 
