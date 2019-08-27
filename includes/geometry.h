@@ -6,7 +6,7 @@
 /*   By: ssheba <ssheba@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/23 16:16:46 by ssheba            #+#    #+#             */
-/*   Updated: 2019/08/22 17:33:37 by ssheba           ###   ########.fr       */
+/*   Updated: 2019/08/27 16:47:25 by ssheba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,7 +130,7 @@ struct	s_sdl
 	SDL_Window		*win;
 	t_img			img;
 	SDL_Event		e;
-	t_shine			lamp[20];
+	t_shine			*lamp;
 	size_t			lamp_size;
 	t_object		**mas;
 	size_t			obj_size;
