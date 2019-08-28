@@ -6,12 +6,26 @@
 /*   By: ssheba <ssheba@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/23 14:12:03 by ssheba            #+#    #+#             */
-/*   Updated: 2019/08/27 18:07:11 by ssheba           ###   ########.fr       */
+/*   Updated: 2019/08/28 16:23:06 by ssheba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "geometry.h"
 #include "reading.h"
+
+static void	norm_lamp(t_sdl *win)
+{
+	t_real	sum;
+	size_t	i;
+
+	sum = 0;
+	i = 0;
+	while (i < win->lamp_size)
+		sum += win->lamp[i++]->bright;
+	i = 0;
+	while (i < win->lamp_size)
+		win->lamp[i++]->bright /= sum;
+}
 
 static void	init_param(t_sdl *win, char **av, int ac)
 {
@@ -37,6 +51,7 @@ static void	init_param(t_sdl *win, char **av, int ac)
 	i = 3;
 	while (++j < win->lamp_size)
 		win->lamp[j] = read_shineinfo(av[i++]); // как-то так пока-что...
+	norm_lamp(win);
 	if (av[i][1] != 'o' || av[i][2] != '\0')
 		msg_finish(USG_MSG);
 	win->obj_size = ac - ++i;
