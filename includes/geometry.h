@@ -6,7 +6,7 @@
 /*   By: ssheba <ssheba@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/23 16:16:46 by ssheba            #+#    #+#             */
-/*   Updated: 2019/08/27 18:23:55 by ssheba           ###   ########.fr       */
+/*   Updated: 2019/08/28 17:37:38 by ssheba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@
 
 # define WIN_X	500
 # define WIN_Y	500
-# define USG_MSG    "Usage: ./RTv1 -p person_file -l shine_file_1 [shine_file_2 ...] -o obj_file_1 [obj_file_2 ...]"
+# define USG_MSG    "Usage: ./RTv1 -p person_file -l shine_files -o obj_files"
+
 # define MEM_MSG    "No memory =("
 # define SDL_MSG    "It is SDL problem"
 
@@ -101,14 +102,16 @@ typedef struct	s_shine
 	t_real			bright;
 }				t_shine;
 
-typedef struct	s_f_t	t_f_t;
-typedef struct	s_sdl	t_sdl;
+typedef struct s_f_t	t_f_t;
+typedef struct s_sdl	t_sdl;
 
 typedef struct	s_object
 {
 	void				*data;
-	t_color				(*get_color)(void *data, t_vec3 *pos, t_sdl *win, size_t id);
-	int					(*intersection)(void *data, t_ray *view, t_vec3 *pos, t_real *t);
+	t_color				(*get_color)(void *data, t_vec3 *pos,
+													t_sdl *win, size_t id);
+	int					(*intersection)(void *data, t_ray *view,
+													t_vec3 *pos, t_real *t);
 }				t_object;
 
 typedef struct	s_point
@@ -131,7 +134,7 @@ typedef struct	s_person
 	t_vec3	o;
 }				t_person;
 
-struct	s_sdl
+struct			s_sdl
 {
 	SDL_Window		*win;
 	t_img			img;
@@ -143,7 +146,7 @@ struct	s_sdl
 	t_person		*view;
 };
 
-struct	s_f_t
+struct			s_f_t
 {
 	t_sdl		*win;
 	t_ray		ray;
@@ -153,20 +156,28 @@ struct	s_f_t
 };
 
 t_object		*create_sphere(t_vec3 center, t_real r, t_color color, int ref);
-t_color			get_sphere_color(void *data, t_vec3 *pos, t_sdl *win, size_t id);
-int				sphere_intersection(void *data, t_ray *view, t_vec3 *pos, t_real *t);
+t_color			get_sphere_color(void *data, t_vec3 *pos,
+													t_sdl *win, size_t id);
+int				sphere_intersection(void *data, t_ray *view,
+													t_vec3 *pos, t_real *t);
 
 t_object		*create_plane(t_vec3 pos, t_vec3 norm, t_color color, int ref);
 t_color			get_plane_color(void *data, t_vec3 *pos, t_sdl *win, size_t id);
-int				plane_intersection(void *data, t_ray *view, t_vec3 *pos, t_real *t);
+int				plane_intersection(void *data, t_ray *view,
+													t_vec3 *pos, t_real *t);
 
-t_object		*create_cylinder(t_vec3 start, t_vec3 way, t_real r, t_color color, int ref);
-t_color			get_cylinder_color(void *data, t_vec3 *pos, t_sdl *win, size_t id);
-int				cylinder_intersection(void *data, t_ray *view, t_vec3 *pos, t_real *t);
+t_object		*create_cylinder(t_vec3 start, t_vec3 way, t_real r,
+													t_color color, int ref);
+t_color			get_cylinder_color(void *data, t_vec3 *pos,
+													t_sdl *win, size_t id);
+int				cylinder_intersection(void *data, t_ray *view,
+													t_vec3 *pos, t_real *t);
 
-t_object		*create_cone(t_vec3 start, t_vec3 way, t_real r, t_color color, int ref);
+t_object		*create_cone(t_vec3 start, t_vec3 way, t_real r,
+													t_color color, int ref);
 t_color			get_cone_color(void *data, t_vec3 *pos, t_sdl *win, size_t id);
-int				cone_intersection(void *data, t_ray *view, t_vec3 *pos, t_real *t);
+int				cone_intersection(void *data, t_ray *view,
+											t_vec3 *pos, t_real *t);
 
 void			init_shine(t_sdl *win, int count);
 t_real			get_lighting(t_sdl *win, t_vec3 *pnv, int power, size_t id);
@@ -177,7 +188,7 @@ void			set_pixel(t_sdl *win, t_point *pos);
 
 void			start(char **file_name, int size);
 void			finish(t_sdl *win);
-void		    msg_finish(char *msg);
+void			msg_finish(char *msg);
 
 void			event(t_sdl *win);
 
