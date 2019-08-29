@@ -6,7 +6,7 @@
 /*   By: ssheba <ssheba@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 10:53:54 by ssheba            #+#    #+#             */
-/*   Updated: 2019/08/16 11:14:58 by ssheba           ###   ########.fr       */
+/*   Updated: 2019/08/29 16:19:02 by ssheba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,13 +61,11 @@ t_object	*create_cylinder(t_vec3 start, t_vec3 way, t_real r, t_color color, int
 	t_cylinder	*new_cylinder;
 	t_object	*new_object;
 
+	errno = 0;
 	if (!(new_cylinder = (t_cylinder *)malloc(sizeof(t_cylinder))))
-		return (NULL);
+		msg_finish(MEM_MSG, NULL, errno);
 	if (!(new_object = (t_object *)malloc(sizeof(t_object))))
-	{
-		free(new_cylinder);
-		return (NULL);
-	}
+		msg_finish(MEM_MSG, NULL, errno);
 	v3_norm(&way, &way);
 	init_axis(new_cylinder, &way);
 	m3_inv(&new_cylinder->axis, &new_cylinder->inv_axis);

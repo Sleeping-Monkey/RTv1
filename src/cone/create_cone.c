@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_cone.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gquence <gquence@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ssheba <ssheba@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/13 15:47:11 by ssheba            #+#    #+#             */
-/*   Updated: 2019/08/16 20:27:12 by gquence          ###   ########.fr       */
+/*   Updated: 2019/08/29 16:31:06 by ssheba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,11 @@ t_object	*create_cone(t_vec3 start, t_vec3 way, t_real r, t_color color, int ref
 	t_cone	*new_cone;
 	t_object	*new_object;
 
+	errno = 0;
 	if (!(new_cone = (t_cone *)malloc(sizeof(t_cone))))
-		return (NULL);
+		msg_finish(MEM_MSG, NULL, errno);
 	if (!(new_object = (t_object *)malloc(sizeof(t_object))))
-	{
-		free(new_cone);
-		return (NULL);
-	}
+		msg_finish(MEM_MSG, NULL, errno);
 	v3_norm(&way, &way);
 	init_axis(new_cone, &start, &way);
 	m3_inv(&new_cone->axis, &new_cone->inv_axis);

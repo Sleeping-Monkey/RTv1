@@ -6,7 +6,7 @@
 /*   By: ssheba <ssheba@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/27 17:43:12 by ssheba            #+#    #+#             */
-/*   Updated: 2019/08/27 18:21:53 by ssheba           ###   ########.fr       */
+/*   Updated: 2019/08/29 16:14:31 by ssheba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,9 @@ t_shine     *get_shine(char **splitted)
 	t_shine	*res;
 	
 	i = 0;
+	errno = 0;
     if (!(res = (t_shine *)malloc(sizeof(t_shine))))
-        msg_finish(MEM_MSG);
+        msg_finish(MEM_MSG, NULL, errno);
 	while (i < 3)
 	{
 		str = (char *)splitted[i];
@@ -38,27 +39,20 @@ t_shine     *get_shine(char **splitted)
 	return (res);
 }
 
-t_shine	    *read_shineinfo(char *filename)
+t_shine	    *read_shineinfo(int fd)
 {
-	int			fd;
 	char		str[BUFF_SIZE + 1];
 	char		**splitted_strs;
 	int			tmp;
 	t_shine 	*obj;
 
-	if (filename != NULL && *filename != 0)
-	{
-		if ((fd = open(filename, O_RDONLY)) < 0)
-			msg_finish(NO_FILE_MSG);
-		if ((tmp = read(fd, &str, BUFF_SIZE)) == -1)
-			return (NULL);
-		str[tmp] = 0;
-		splitted_strs = ft_strsplit(str, '\n');
-		obj = get_shine(splitted_strs);
-		free_char_arr(&splitted_strs);
-		return (obj);
-	}
-	else
-		ft_putendl("filename is not found");
-	return (NULL);
+	errno = 0;
+	if ((tmp = read(fd, &str, BUFF_SIZE)) == -1)
+		msg_finish(NO_FILE_MSG, NULL, errno);
+	close(fd);
+	str[tmp] = 0;
+	splitted_strs = ft_strsplit(str, '\n');
+	obj = get_shine(splitted_strs);
+	free_char_arr(&splitted_strs);
+	return (obj);
 }

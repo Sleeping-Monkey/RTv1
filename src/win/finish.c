@@ -6,7 +6,7 @@
 /*   By: ssheba <ssheba@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/23 14:17:29 by ssheba            #+#    #+#             */
-/*   Updated: 2019/08/27 18:03:35 by ssheba           ###   ########.fr       */
+/*   Updated: 2019/08/29 16:08:36 by ssheba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,15 @@ void		finish(t_sdl *win)
 	exit(0);
 }
 
-void		msg_finish(char *msg)
+void		msg_finish(char *msg, char *filename, int flag)
 {
-	ft_putendl_fd(msg, 2);
+	if (flag)
+		perror(strerror(errno));
+	else
+	{
+		ft_putendl_fd(msg, 2);
+		if (filename)
+			ft_putendl_fd(filename, 2);
+	}
 	exit(1);
 }

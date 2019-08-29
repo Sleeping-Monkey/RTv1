@@ -6,7 +6,7 @@
 /*   By: ssheba <ssheba@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/23 14:12:03 by ssheba            #+#    #+#             */
-/*   Updated: 2019/08/28 16:23:06 by ssheba           ###   ########.fr       */
+/*   Updated: 2019/08/29 16:47:06 by ssheba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,28 +32,31 @@ static void	init_param(t_sdl *win, char **av, int ac)
 	int		i;
 	size_t	j;
 
+	errno = 0;
 	if (ac < 6 || av[0][0] != '-' || av[0][1] != 'p' || av[0][2] != '\0' || \
 	av[2][0] != '-' || av[2][1] != 'l' || av[2][2] != '\0')
-		msg_finish(USG_MSG);
+		msg_finish(USG_MSG, NULL, 0);
 	if (av[1][0] == '!' && av[1][1] == '\0')
 		win->view = create_person(VEC(WIN_X * 0.5, WIN_Y * 0.5, -WIN_X), \
 		VEC(WIN_X * 0.5 + 1, WIN_Y * 0.5, -WIN_X), \
 		VEC(WIN_X * 0.5, WIN_Y * 0.5 + 1, -WIN_X));
+	else
+		win->view = read_personinfo(get_fd(av[1]));	
 	i = 3;
 	while (i < ac && av[i][0] != '-')
 		i++;
 	if (i == ac)
-		msg_finish(USG_MSG);
+		msg_finish(USG_MSG, NULL, 0);
 	win->lamp_size = i - 3;
 	if (!(win->lamp = (t_shine **)malloc(sizeof(t_shine *) * (win->lamp_size))))
-		msg_finish(MEM_MSG);
+		msg_finish(MEM_MSG, NULL, errno);
 	j = -1;
 	i = 3;
 	while (++j < win->lamp_size)
-		win->lamp[j] = read_shineinfo(av[i++]); // как-то так пока-что...
+		win->lamp[j] = read_shineinfo(get_fd(av[i++])); // как-то так пока-что...
 	norm_lamp(win);
 	if (av[i][1] != 'o' || av[i][2] != '\0')
-		msg_finish(USG_MSG);
+		msg_finish(USG_MSG, NULL, 0);
 	win->obj_size = ac - ++i;
 	init_objects(win, av + i, win->obj_size);
 }
@@ -63,12 +66,13 @@ void		start(char **file_name, int size)
 {
 	t_sdl	win;
 
+	errno = 0;
 	init_param(&win, file_name, size);
 	if (SDL_Init(SDL_INIT_EVERYTHING) != 0)
-		msg_finish(SDL_MSG);
+		msg_finish(SDL_MSG, NULL, errno);
 	win.win = SDL_CreateWindow("RTv1", 100, 100, WIN_X, WIN_Y, SDL_WINDOW_SHOWN);
 	if (win.win == NULL)
-		msg_finish(SDL_MSG);
+		msg_finish(SDL_MSG, NULL, errno);
 //	if (!(init_objects(&win, file_name, size)))
 //		finish(&win);
 	win.img.img = SDL_GetWindowSurface(win.win);

@@ -8,6 +8,7 @@ int main(int argc, char **argv)
 		ft_putendl(USG_MSG);
 		return (0);
 	}
+	errno = 0;
 	start(argv + 1, argc - 1);
 
 	return (0);

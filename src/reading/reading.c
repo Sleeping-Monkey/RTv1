@@ -6,27 +6,12 @@
 /*   By: ssheba <ssheba@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/09 15:59:21 by gquence           #+#    #+#             */
-/*   Updated: 2019/08/27 18:19:15 by ssheba           ###   ########.fr       */
+/*   Updated: 2019/08/29 16:19:52 by ssheba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <fcntl.h>
 #include "reading.h"
 #include "libft.h"
-
-void		errs_exit(char *err, void *ptr)
-{
-    if (ptr)
-        free(ptr);
-    if (!ft_strcmp("check_figtype", err))
-        ft_putendl("There is no figure like this!(in using: cylinder, sphere, plane, cone)");
-    else if (!ft_strcmp("nofile", err))
-        ft_putendl("There is no file with this filename in this directory");
-    else
-        return ;
-    exit(1);   
-}
 
 int			check_figuretype(char *str)
 {
@@ -205,36 +190,21 @@ t_object	*get_fig_info(const int figtype, const char **splitted)
 	return (NULL);
 }
 
-t_object	*read_objinfo(char *filename)
+t_object	*read_objinfo(int fd)
 {
-	int			fd;
 	char		str[BUFF_SIZE + 1];
 	char		**splitted_strs;
 	int			tmp;
 	t_object	*obj;
 
-	if (filename != NULL && *filename != 0)
-	{
-		if ((fd = open(filename, O_RDONLY)) < 0)
-			errs_exit("nofile", NULL);
-		if ((tmp = read(fd, &str, BUFF_SIZE)) == -1)
-			return (NULL);
-		str[tmp] = 0;
-		splitted_strs = ft_strsplit(str, '\n');
-		if (!(tmp = check_figuretype(splitted_strs[0])))
-			msg_finish(ERR_FIG_MSG);
-		obj = get_fig_info(tmp, (const char **)&splitted_strs[1]);
-		free_char_arr(&splitted_strs);
-		return (obj);
-	}
-	else
-		msg_finish("filename is not found");
-	return (NULL);
+	errno = 0;
+	if ((tmp = read(fd, &str, BUFF_SIZE)) == -1)
+		msg_finish(NO_FILE_MSG, NULL, errno);
+	str[tmp] = 0;
+	splitted_strs = ft_strsplit(str, '\n');
+	if (!(tmp = check_figuretype(splitted_strs[0])))
+		msg_finish(ERR_FIG_MSG, NULL, errno);
+	obj = get_fig_info(tmp, (const char **)&splitted_strs[1]);
+	free_char_arr(&splitted_strs);
+	return (obj);
 }
-
-/* int main(int ac, char **av)
-{
-	if (ac == 2)
-		read_objinfo(av[1]);
-	return (0);	
-}*/

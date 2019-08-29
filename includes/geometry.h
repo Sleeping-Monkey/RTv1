@@ -6,7 +6,7 @@
 /*   By: ssheba <ssheba@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/23 16:16:46 by ssheba            #+#    #+#             */
-/*   Updated: 2019/08/28 17:37:38 by ssheba           ###   ########.fr       */
+/*   Updated: 2019/08/29 16:08:01 by ssheba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stdio.h>
 # include <time.h>
 # include <pthread.h>
+# include <errno.h>
 
 # ifdef __APPLE__
 #  include "SDL.h"
@@ -188,7 +189,7 @@ void			set_pixel(t_sdl *win, t_point *pos);
 
 void			start(char **file_name, int size);
 void			finish(t_sdl *win);
-void			msg_finish(char *msg);
+void			msg_finish(char *msg, char *filename, int flag);
 
 void			event(t_sdl *win);
 
