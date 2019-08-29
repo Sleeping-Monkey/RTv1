@@ -6,7 +6,7 @@
 #    By: ssheba <ssheba@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/07/22 13:30:17 by ssheba            #+#    #+#              #
-#    Updated: 2019/08/29 16:44:15 by ssheba           ###   ########.fr        #
+#    Updated: 2019/08/29 17:16:08 by ssheba           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,8 @@ OBJ_DIR		=	./obj
 INC_DIR		=	./includes
 
 RDG_FILES	=	get_double.c get_fd.c get_person.c reading.c reading_shine.c \
-				reading_utils.c
+				reading_utils.c get_cone.c get_cylinder.c get_plane.c \
+				get_sphere.c
 CONE_FILES	=	cone_intersection.c create_cone.c get_cone_color.c
 CLND_FILES	=	create_cylinder.c cylinder_intersection.c get_cylinder_color.c
 MAT_FILES	=	mat3.c mat3_op.c mat3_rot.c vec3.c vec3_op.c

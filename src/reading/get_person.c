@@ -1,13 +1,24 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_person.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ssheba <ssheba@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/08/29 17:52:25 by ssheba            #+#    #+#             */
+/*   Updated: 2019/08/29 17:52:28 by ssheba           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "reading.h"
 
-t_person    *get_person(char **splitted)
+t_person	*get_person(char **splitted)
 {
 	int		i;
 	char	*str;
 	t_vec3	arr[3];
 
 	i = 0;
-	
 	while (i < 3)
 	{
 		str = (char *)splitted[i];
@@ -27,7 +38,7 @@ t_person	*read_personinfo(int fd)
 	char		str[BUFF_SIZE + 1];
 	char		**splitted_strs;
 	int			tmp;
-	t_person 	*obj;
+	t_person	*obj;
 
 	errno = 0;
 	if ((tmp = read(fd, &str, BUFF_SIZE)) == -1)

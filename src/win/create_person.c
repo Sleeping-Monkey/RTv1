@@ -6,7 +6,7 @@
 /*   By: ssheba <ssheba@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/07 16:58:57 by ssheba            #+#    #+#             */
-/*   Updated: 2019/08/08 10:20:39 by ssheba           ###   ########.fr       */
+/*   Updated: 2019/08/29 18:14:03 by ssheba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,9 @@ t_person	*create_person(t_vec3 o, t_vec3 x, t_vec3 y)
 	t_vec3		j;
 	t_vec3		k;
 
+	errno = 0;
 	if (!(new_person = (t_person *)malloc(sizeof(t_person))))
-		return (NULL);
+		msg_finish(MEM_MSG, NULL, errno);
 	v3_norm(v3_sub(&x, &o, &i), &i);
 	v3_norm(v3_sub(&y, &o, &j), &j);
 	v3_cross(&i, &j, &k);

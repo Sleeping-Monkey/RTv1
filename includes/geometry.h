@@ -6,7 +6,7 @@
 /*   By: ssheba <ssheba@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/23 16:16:46 by ssheba            #+#    #+#             */
-/*   Updated: 2019/08/29 16:08:01 by ssheba           ###   ########.fr       */
+/*   Updated: 2019/08/29 17:56:37 by ssheba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@
 
 # define MEM_MSG    "No memory =("
 # define SDL_MSG    "It is SDL problem"
+# define PTH_MSG	"Pthreads error"
 
 typedef struct	s_color
 {
@@ -53,8 +54,8 @@ typedef struct	s_sphere
 {
 	t_mat3		axis;
 	t_mat3		inv_axis;
-	t_vec3		center;
-	t_real		radius;
+	t_vec3		o;
+	t_real		r;
 	t_color		color;
 	int			reflection;
 }				t_sphere;
@@ -74,7 +75,8 @@ typedef struct	s_cylinder
 	t_mat3		axis;
 	t_mat3		inv_axis;
 	t_vec3		o;
-	t_real		radius;
+	t_real		r;
+	t_real		r_2;
 	t_color		color;
 	int			reflection;
 }				t_cylinder;
@@ -84,7 +86,8 @@ typedef struct	s_cone
 	t_mat3		axis;
 	t_mat3		inv_axis;
 	t_vec3		o;
-	t_real		radius;
+	t_real		r;
+	t_real		r_2;
 	t_color		color;
 	int			reflection;
 }				t_cone;
@@ -167,15 +170,13 @@ t_color			get_plane_color(void *data, t_vec3 *pos, t_sdl *win, size_t id);
 int				plane_intersection(void *data, t_ray *view,
 													t_vec3 *pos, t_real *t);
 
-t_object		*create_cylinder(t_vec3 start, t_vec3 way, t_real r,
-													t_color color, int ref);
+t_object		*create_cylinder(t_vec3 *sw, t_real r, t_color color, int ref);
 t_color			get_cylinder_color(void *data, t_vec3 *pos,
 													t_sdl *win, size_t id);
 int				cylinder_intersection(void *data, t_ray *view,
 													t_vec3 *pos, t_real *t);
 
-t_object		*create_cone(t_vec3 start, t_vec3 way, t_real r,
-													t_color color, int ref);
+t_object		*create_cone(t_vec3 *sw, t_real r, t_color color, int ref);
 t_color			get_cone_color(void *data, t_vec3 *pos, t_sdl *win, size_t id);
 int				cone_intersection(void *data, t_ray *view,
 											t_vec3 *pos, t_real *t);

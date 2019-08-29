@@ -6,7 +6,7 @@
 /*   By: ssheba <ssheba@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/10 12:21:06 by gquence           #+#    #+#             */
-/*   Updated: 2019/08/29 16:22:27 by ssheba           ###   ########.fr       */
+/*   Updated: 2019/08/29 18:30:26 by ssheba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,15 @@ void		print_color(t_color color);
 void		print_vector(t_vec3 vect);
 long double	get_ldouble(char *str);
 int			ft_fatoi(char **pstr, int *result);
+
 t_color		get_color(char *str, t_color *res);
 t_vec3		get_vector(char *str);
+
+t_object	*get_plane(char **splitted);
+t_object	*get_sphere(char **splitted);
+t_object	*get_cylinder(char **splitted);
+t_object	*get_cone(char **splitted);
+
 t_object	*read_objinfo(int fd);
 t_shine		*read_shineinfo(int fd);
 t_person	*read_personinfo(int fd);

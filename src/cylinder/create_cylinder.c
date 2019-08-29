@@ -6,7 +6,7 @@
 /*   By: ssheba <ssheba@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 10:53:54 by ssheba            #+#    #+#             */
-/*   Updated: 2019/08/29 16:19:02 by ssheba           ###   ########.fr       */
+/*   Updated: 2019/08/29 17:04:22 by ssheba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,9 @@ static void	init_axis(t_cylinder *cylinder, t_vec3 *k)
 	cylinder->axis.r[0][2] = k->x;
 	cylinder->axis.r[1][2] = k->y;
 	cylinder->axis.r[2][2] = k->z;
-	printf("[%Lf, %Lf, %Lf]\n", cylinder->axis.r[0][0], cylinder->axis.r[0][1], cylinder->axis.r[0][2]);
-	printf("[%Lf, %Lf, %Lf]\n", cylinder->axis.r[1][0], cylinder->axis.r[1][1], cylinder->axis.r[1][2]);
-	printf("[%Lf, %Lf, %Lf]\n\n", cylinder->axis.r[2][0], cylinder->axis.r[2][1], cylinder->axis.r[2][2]);
 }
 
-t_object	*create_cylinder(t_vec3 start, t_vec3 way, t_real r, t_color color, int ref)
+t_object	*create_cylinder(t_vec3 *sw, t_real r, t_color color, int ref)
 {
 	t_cylinder	*new_cylinder;
 	t_object	*new_object;
@@ -66,14 +63,12 @@ t_object	*create_cylinder(t_vec3 start, t_vec3 way, t_real r, t_color color, int
 		msg_finish(MEM_MSG, NULL, errno);
 	if (!(new_object = (t_object *)malloc(sizeof(t_object))))
 		msg_finish(MEM_MSG, NULL, errno);
-	v3_norm(&way, &way);
-	init_axis(new_cylinder, &way);
+	v3_norm(sw + 1, sw + 1);
+	init_axis(new_cylinder, sw + 1);
 	m3_inv(&new_cylinder->axis, &new_cylinder->inv_axis);
-//	printf("[%Lf, %Lf, %Lf]\n", new_cylinder->inv_axis.r[0][0], new_cylinder->inv_axis.r[0][1], new_cylinder->inv_axis.r[0][2]);
-//	printf("[%Lf, %Lf, %Lf]\n", new_cylinder->inv_axis.r[1][0], new_cylinder->inv_axis.r[1][1], new_cylinder->inv_axis.r[1][2]);
-//	printf("[%Lf, %Lf, %Lf]\n\n", new_cylinder->inv_axis.r[2][0], new_cylinder->inv_axis.r[2][1], new_cylinder->inv_axis.r[2][2]);
-	m3v3_mul(&new_cylinder->axis, &start, &new_cylinder->o);
-	new_cylinder->radius = r;
+	m3v3_mul(&new_cylinder->axis, sw, &new_cylinder->o);
+	new_cylinder->r = r;
+	new_cylinder->r_2 = r * r;
 	new_cylinder->color = color;
 	new_cylinder->reflection = ref;
 	new_object->data = new_cylinder;

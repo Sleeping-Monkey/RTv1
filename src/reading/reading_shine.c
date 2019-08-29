@@ -6,22 +6,22 @@
 /*   By: ssheba <ssheba@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/27 17:43:12 by ssheba            #+#    #+#             */
-/*   Updated: 2019/08/29 16:14:31 by ssheba           ###   ########.fr       */
+/*   Updated: 2019/08/29 17:21:08 by ssheba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "reading.h"
 
-t_shine     *get_shine(char **splitted)
+t_shine	*get_shine(char **splitted)
 {
 	int		i;
 	char	*str;
 	t_shine	*res;
-	
+
 	i = 0;
 	errno = 0;
-    if (!(res = (t_shine *)malloc(sizeof(t_shine))))
-        msg_finish(MEM_MSG, NULL, errno);
+	if (!(res = (t_shine *)malloc(sizeof(t_shine))))
+		msg_finish(MEM_MSG, NULL, errno);
 	while (i < 3)
 	{
 		str = (char *)splitted[i];
@@ -39,12 +39,12 @@ t_shine     *get_shine(char **splitted)
 	return (res);
 }
 
-t_shine	    *read_shineinfo(int fd)
+t_shine	*read_shineinfo(int fd)
 {
 	char		str[BUFF_SIZE + 1];
 	char		**splitted_strs;
 	int			tmp;
-	t_shine 	*obj;
+	t_shine		*obj;
 
 	errno = 0;
 	if ((tmp = read(fd, &str, BUFF_SIZE)) == -1)
