@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ssheba <ssheba@student.42.fr>              +#+  +:+       +#+         #
+#    By: gquence <gquence@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/07/22 13:30:17 by ssheba            #+#    #+#              #
-#    Updated: 2019/08/27 18:08:24 by ssheba           ###   ########.fr        #
+#    Updated: 2019/08/29 15:18:23 by gquence          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ SRC_FILES	=	get_sphere_color.c create_sphere.c init_objects.c set_pixel.c \
 				get_cylinder_color.c mat3.c mat3_op.c vec3_op.c vec3.c \
 				create_person.c create_cone.c cone_intersection.c \
 				get_cone_color.c mat3_rot.c
-RDG_FILES	=	get_double.c reading_utils.c reading.c reading_shine.c
+RDG_FILES	=	get_double.c reading_utils.c reading.c reading_shine.c get_person.c
 OBJ_FILES	=	$(SRC_FILES:.c=.o) $(RDG_FILES:.c=.o)
 INC_FILES	=	geometry.h mat.h reading.h
 

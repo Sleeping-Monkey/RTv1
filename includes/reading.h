@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   reading.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ssheba <ssheba@student.42.fr>              +#+  +:+       +#+        */
+/*   By: gquence <gquence@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/10 12:21:06 by gquence           #+#    #+#             */
-/*   Updated: 2019/08/28 17:41:56 by ssheba           ###   ########.fr       */
+/*   Updated: 2019/08/29 15:18:03 by gquence          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,6 @@ t_color		get_color(char *str, t_color *res);
 t_vec3		get_vector(char *str);
 t_object	*read_objinfo(char *filename);
 t_shine		*read_shineinfo(char *filename);
+t_person    *get_person(char **splitted);
 
 #endif
