@@ -28,7 +28,7 @@ t_color	get_plane_color(void *data, t_vec3 *pos, t_sdl *win, size_t id)
 		return (COLOR(i * plane->color.r, i * plane->color.g, \
 		i * plane->color.b, plane->color.a));
 	}
-	if (win->lamp_size && win->lamp[0]->type == AMBIENT)
+	if (win->amb_flag)
 		return (COLOR(255, 255, 255, 0));
 	return (COLOR(0, 0, 0, 0));
 }

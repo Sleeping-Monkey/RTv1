@@ -80,7 +80,7 @@ void		trace(t_sdl *win)
 	while (y < THREADS)
 	{
 		for_thread[y] = (t_f_t){win, ray, {0, 0, 0}, y, 0};
-		if (!(res = pthread_create(&thread[y], NULL, thread_func, \
+		if ((res = pthread_create(&thread[y], NULL, thread_func, \
 		for_thread + y)))
 			msg_finish(PTH_MSG, NULL, errno);
 		y++;

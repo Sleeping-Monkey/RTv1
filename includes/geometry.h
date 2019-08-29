@@ -145,6 +145,7 @@ struct			s_sdl
 	SDL_Event		e;
 	t_shine			**lamp;
 	size_t			lamp_size;
+	char			amb_flag;
 	t_object		**mas;
 	size_t			obj_size;
 	t_person		*view;

@@ -30,7 +30,7 @@ t_color	get_sphere_color(void *data, t_vec3 *pos, t_sdl *win, size_t id)
 		return (COLOR(i * sphere->color.r, i * sphere->color.g, \
 		i * sphere->color.b, sphere->color.a));
 	}
-	if (win->lamp_size && win->lamp[0]->type == AMBIENT)
+	if (win->amb_flag)
 		return (COLOR(255, 255, 255, 0));
 	return (COLOR(0, 0, 0, 0));
 }

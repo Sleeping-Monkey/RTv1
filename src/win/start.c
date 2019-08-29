@@ -20,8 +20,13 @@ static void	norm_lamp(t_sdl *win)
 
 	sum = 0;
 	i = 0;
+	win->amb_flag = 0;
 	while (i < win->lamp_size)
+	{
+		if (win->lamp[i]->type == AMBIENT)
+			win->amb_flag = 1;
 		sum += win->lamp[i++]->bright;
+	}
 	i = 0;
 	while (i < win->lamp_size)
 		win->lamp[i++]->bright /= sum;
