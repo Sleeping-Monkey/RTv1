@@ -6,7 +6,7 @@
 /*   By: ssheba <ssheba@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/23 16:16:46 by ssheba            #+#    #+#             */
-/*   Updated: 2019/08/29 17:56:37 by ssheba           ###   ########.fr       */
+/*   Updated: 2019/08/30 16:57:04 by ssheba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@
 # endif
 # include "mat.h"
 
-# define WIN_X	500
-# define WIN_Y	500
+# define WIN_X	1000
+# define WIN_Y	1000
 # define USG_MSG    "Usage: ./RTv1 -p person_file -l shine_files -o obj_files"
 
 # define MEM_MSG    "No memory =("

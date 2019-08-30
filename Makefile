@@ -6,11 +6,11 @@
 #    By: ssheba <ssheba@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/07/22 13:30:17 by ssheba            #+#    #+#              #
-#    Updated: 2019/08/29 17:16:08 by ssheba           ###   ########.fr        #
+#    Updated: 2019/08/30 17:18:54 by ssheba           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		=	test
+NAME		=	RTv1
 
 RDG_DIR		=	./src/reading
 CONE_DIR	=	./src/cone

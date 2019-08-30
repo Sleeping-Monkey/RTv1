@@ -3,27 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   reading_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gquence <gquence@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ssheba <ssheba@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/15 14:36:56 by gquence           #+#    #+#             */
-/*   Updated: 2019/08/23 20:02:36 by gquence          ###   ########.fr       */
+/*   Updated: 2019/08/30 16:46:47 by ssheba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "geometry.h"
 #include "reading.h"
 #include "libft.h"
-
-void	print_vector(t_vec3 vect)
-{
-	printf("vector: x=%LF y=%LF z=%LF\n", vect.x, vect.y, vect.z);
-}
-
-void	print_color(t_color color)
-{
-	printf("color: r=%d g=%d b=%d a=%d\n", (int)color.r, (int)color.g,
-	(int)color.b, (int)color.a);
-}
 
 int		ft_fatoi(char **pstr, int *result)
 {

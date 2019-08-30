@@ -6,7 +6,7 @@
 /*   By: ssheba <ssheba@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/10 12:21:06 by gquence           #+#    #+#             */
-/*   Updated: 2019/08/29 18:30:26 by ssheba           ###   ########.fr       */
+/*   Updated: 2019/08/30 16:46:58 by ssheba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@
 # define NO_FILE_MSG    "Problem with file:"
 # define ERR_FIG_MSG    "Use only cylinder, sphere, plane or cone"
 
-void		print_color(t_color color);
-void		print_vector(t_vec3 vect);
 long double	get_ldouble(char *str);
 int			ft_fatoi(char **pstr, int *result);
 

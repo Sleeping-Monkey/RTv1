@@ -6,7 +6,7 @@
 /*   By: ssheba <ssheba@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/27 17:43:12 by ssheba            #+#    #+#             */
-/*   Updated: 2019/08/29 17:21:08 by ssheba           ###   ########.fr       */
+/*   Updated: 2019/08/30 16:46:37 by ssheba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,6 @@ t_shine	*get_shine(char **splitted)
 			res->bright = get_ldouble(str + 7);
 		i++;
 	}
-	printf("type = %d\n", res->type);
-	print_vector(res->pos);
-	printf("bright = %LF", res->bright);
 	return (res);
 }
 
