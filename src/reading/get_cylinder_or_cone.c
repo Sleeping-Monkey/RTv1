@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_cylinder.c                                     :+:      :+:    :+:   */
+/*   get_cylinder_or_cone.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ssheba <ssheba@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/29 17:13:54 by ssheba            #+#    #+#             */
-/*   Updated: 2019/08/29 18:30:24 by ssheba           ###   ########.fr       */
+/*   Updated: 2019/08/31 10:45:29 by ssheba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "reading.h"
 
-t_object	*get_cylinder(char **splitted)
+t_object	*get_cylinder_or_cone(char **splitted, int type)
 {
 	int		i;
 	t_vec3	sw[2];
@@ -33,10 +33,10 @@ t_object	*get_cylinder(char **splitted)
 			color = get_color(splitted[i] + 6, &color);
 		else if (ft_strcmp(splitted[i], "refl\0") == ':')
 			refl = ft_atoi(splitted[i] + 5);
-		else if (!ft_strcmp(splitted[i], ">>"))
-			break ;
+		else 
+			msg_finish(ERR_VAL_MSG, NULL, 0);
 	}
-	if (color.r == 0 && color.g == 0 && color.b == 0 && color.a == 0)
-		color = COLOR(255, 0, 0, 0);
-	return (create_cylinder(sw, rad, color, refl));
+	if (type == 3)
+		return (create_cylinder(sw, rad, color, refl));
+	return (create_cone(sw, rad, color, refl));
 }

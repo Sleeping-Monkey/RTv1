@@ -6,7 +6,7 @@
 /*   By: ssheba <ssheba@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/10 12:21:06 by gquence           #+#    #+#             */
-/*   Updated: 2019/08/30 16:46:58 by ssheba           ###   ########.fr       */
+/*   Updated: 2019/08/31 10:44:52 by ssheba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # define BUFF_SIZE 2000
 # define NO_FILE_MSG    "Problem with file:"
 # define ERR_FIG_MSG    "Use only cylinder, sphere, plane or cone"
+# define ERR_VAL_MSG	"Wrong description"
 
 long double	get_ldouble(char *str);
 int			ft_fatoi(char **pstr, int *result);
@@ -30,8 +31,7 @@ t_vec3		get_vector(char *str);
 
 t_object	*get_plane(char **splitted);
 t_object	*get_sphere(char **splitted);
-t_object	*get_cylinder(char **splitted);
-t_object	*get_cone(char **splitted);
+t_object	*get_cylinder_or_cone(char **splitted, int type);
 
 t_object	*read_objinfo(int fd);
 t_shine		*read_shineinfo(int fd);

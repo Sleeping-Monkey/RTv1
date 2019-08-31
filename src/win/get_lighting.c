@@ -6,7 +6,7 @@
 /*   By: ssheba <ssheba@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/01 09:13:07 by ssheba            #+#    #+#             */
-/*   Updated: 2019/08/29 18:33:16 by ssheba           ###   ########.fr       */
+/*   Updated: 2019/08/31 09:28:36 by ssheba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static int		check_shadow(t_sdl *win, t_ray *ray, size_t id)
 	{
 		if (i != id && \
 		win->mas[i]->intersection(win->mas[i]->data, ray, &pos, &t) == 1 \
-		&& (t < 1))
+		&& (t < 1) && (t != 0))
 			return (1);
 		i++;
 	}

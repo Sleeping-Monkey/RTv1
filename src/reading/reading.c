@@ -6,7 +6,7 @@
 /*   By: ssheba <ssheba@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/30 17:24:01 by ssheba            #+#    #+#             */
-/*   Updated: 2019/08/30 17:24:03 by ssheba           ###   ########.fr       */
+/*   Updated: 2019/08/31 10:43:08 by ssheba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,8 @@ t_object	*get_fig_info(const int figtype, char **splitted)
 		return (get_plane(splitted));
 	if (figtype == 2)
 		return (get_sphere(splitted));
-	if (figtype == 3)
-		return (get_cylinder(splitted));
-	if (figtype == 4)
-		return (get_cone(splitted));
+	if (figtype == 3 || figtype == 4)
+		return (get_cylinder_or_cone(splitted, figtype));
 	return (NULL);
 }
 
@@ -67,7 +65,8 @@ t_object	*read_objinfo(int fd)
 	splitted_strs = ft_strsplit(str, '\n');
 	if (!(tmp = check_figuretype(splitted_strs[0])))
 		msg_finish(ERR_FIG_MSG, NULL, errno);
-	obj = get_fig_info(tmp, &splitted_strs[1]);
+	printf("Type is ok\n");
+	obj = get_fig_info(tmp, splitted_strs + 1);
 	free_char_arr(&splitted_strs);
 	return (obj);
 }

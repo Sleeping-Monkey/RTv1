@@ -6,7 +6,7 @@
 /*   By: ssheba <ssheba@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/29 17:52:25 by ssheba            #+#    #+#             */
-/*   Updated: 2019/08/29 17:52:28 by ssheba           ###   ########.fr       */
+/*   Updated: 2019/08/31 09:40:27 by ssheba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ t_person	*get_person(char **splitted)
 			arr[1] = get_vector(str + 2);
 		else if (ft_strcmp(str, "y\0") == ':')
 			arr[2] = get_vector(str + 2);
+		else
+			msg_finish(ERR_VAL_MSG, NULL, 0);
 		i++;
 	}
 	return (create_person(arr[0], arr[1], arr[2]));

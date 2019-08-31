@@ -6,7 +6,7 @@
 /*   By: ssheba <ssheba@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/29 17:13:08 by ssheba            #+#    #+#             */
-/*   Updated: 2019/08/29 18:30:18 by ssheba           ###   ########.fr       */
+/*   Updated: 2019/08/31 09:41:36 by ssheba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,9 @@ t_object	*get_sphere(char **splitted)
 			color = get_color(splitted[i] + 6, &color);
 		else if (ft_strcmp(splitted[i], "refl\0") == ':')
 			refl = ft_atoi(splitted[i] + 5);
-		else if (!ft_strcmp(splitted[i], ">>"))
-			break ;
+		else
+			msg_finish(ERR_VAL_MSG, NULL, 0);
 		i++;
 	}
-	if (color.r == 0 && color.g == 0 && color.b == 0 && color.a == 0)
-		color = COLOR(255, 0, 0, 0);
 	return (create_sphere(center, rad, color, refl));
 }
