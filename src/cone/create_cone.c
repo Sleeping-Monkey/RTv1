@@ -6,24 +6,42 @@
 /*   By: ssheba <ssheba@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/13 15:47:11 by ssheba            #+#    #+#             */
-/*   Updated: 2019/08/29 17:01:52 by ssheba           ###   ########.fr       */
+/*   Updated: 2019/09/04 17:43:16 by ssheba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "geometry.h"
+
+static void	get_ijk(t_vec3 *i, t_vec3 *j, t_vec3 *k)
+{
+	if ((k->x != 0 && k->z != 0) || k->y * k->y == 1 || k->z * k->z == 1)
+	{
+		if (k->y * k->y == 1 || k->z * k->z == 1)
+			*j = VEC(0, k->z, k->y);
+		else if (k->y == 0)
+			*j = VEC(0, -1, 0);
+		else
+			*j = VEC(k->x / (1 + k->z), (k->y - k->z - 1) / (1 + k->z), k->y);
+		v3_cross(j, k, i);
+	}
+	else
+	{
+		if (k->x * k->x == 1)
+			*i = VEC(0, 0, k->x);
+		else if (k->x == 0)
+			*i = VEC(-1, 0, 0);
+		else
+			*i = VEC(-k->y * k->y, k->x * k->y, k->x);
+		v3_cross(k, i, j);
+	}
+}
 
 static void	init_axis(t_cone *cone, t_vec3 *k)
 {
 	t_vec3	i;
 	t_vec3	j;
 
-	if (k->z * k->z != 1)
-		i = VEC((k->x * k->x * k->z + k->y * k->y) / (k->z * k->z - 1), \
-		(k->x * k->y * k->z + k->y * k->x) / (k->z * k->z - 1), k->x);
-	else
-		i = VEC(1, 0, 0);
-	v3_norm(&i, &i);
-	v3_cross(k, &i, &j);
+	get_ijk(&i, &j, k);
 	cone->axis.r[0][0] = i.x;
 	cone->axis.r[1][0] = i.y;
 	cone->axis.r[2][0] = i.z;

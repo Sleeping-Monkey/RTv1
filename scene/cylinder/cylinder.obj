@@ -1,6 +1,6 @@
 cylinder
 start: 500 500 500
-way: 0 1 0
+way: 0 1 1
 rad: 100
 color: 0 123 100 23
 refl: 300
