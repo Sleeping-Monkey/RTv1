@@ -6,7 +6,7 @@
 /*   By: ssheba <ssheba@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/07 11:47:42 by ssheba            #+#    #+#             */
-/*   Updated: 2019/08/07 13:20:03 by ssheba           ###   ########.fr       */
+/*   Updated: 2019/09/05 16:16:33 by ssheba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,9 @@ t_mat3			*m3_copy(t_mat3 *m, t_mat3 *out);
 void			m3_zero(t_mat3 *m);
 t_real			m3_det(t_mat3 *m);
 t_mat3			*m3_inv(t_mat3 *m, t_mat3 *out);
-void			m3_rotx(t_mat3 *m, t_real alpha);
-void			m3_roty(t_mat3 *m, t_real alpha);
-void			m3_rotz(t_mat3 *m, t_real alpha);
+void			m3_rotx(t_mat3 *m, t_real cos_a, t_real sin_a);
+void			m3_roty(t_mat3 *m, t_real cos_a, t_real sin_a);
+void			m3_rotz(t_mat3 *m, t_real cos_a, t_real sin_a);
 t_mat3			*m3_trs(t_mat3 *m, t_mat3 *out);
 
 /*

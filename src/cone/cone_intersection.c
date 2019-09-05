@@ -6,7 +6,7 @@
 /*   By: ssheba <ssheba@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/13 15:51:08 by ssheba            #+#    #+#             */
-/*   Updated: 2019/08/29 16:58:33 by ssheba           ###   ########.fr       */
+/*   Updated: 2019/09/05 18:07:55 by ssheba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int			cone_intersection(void *data, t_ray *view, t_vec3 *pos, t_real *t)
 	t_real		sc[5];
 	t_cone		*cone;
 	t_ray		axis_view;
+	static int		counter = 0;
 
 	cone = (t_cone *)data;
 	v3_sub(m3v3_mul(&cone->axis, &view->start, &axis_view.start), \
@@ -38,13 +39,19 @@ int			cone_intersection(void *data, t_ray *view, t_vec3 *pos, t_real *t)
 	odds_calc(sc, cone, vec);
 	if (sc[3] < 0)
 		return (0);
-	sc[4] = (-sc[1] - sqrt(sc[3])) / (sc[0]) >= 0 ? \
-	(-sc[1] - sqrt(sc[3])) / (sc[0]) : (-sc[1] + sqrt(sc[3])) / (sc[0]);
+	sc[4] = ((-sc[1] - sqrt(sc[3])) / sc[0]) >= 0 ? \
+	((-sc[1] - sqrt(sc[3])) / sc[0]) : ((-sc[1] + sqrt(sc[3])) / sc[0]);
 	if (sc[4] < 0)
+	{
+		SDL_Log("%d", ++counter);
 		return (0);
+	}
 	if (t)
 		*t = sc[4];
+	//	SDL_Log("%d", *t == 0 ? ++counter : counter);
 	m3v3_mul(&cone->inv_axis, v3_add(&axis_view.start, \
 	v3s_mull(vec + 1, sc[4], pos), pos), pos);
+//	if (pos->x == 500 && pos->y == 500)
+//		SDL_Log("%d", pos->z == -1000 ? ++counter : ++counter);
 	return (1);
 }

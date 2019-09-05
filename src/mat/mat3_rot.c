@@ -6,45 +6,45 @@
 /*   By: ssheba <ssheba@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/29 17:06:50 by ssheba            #+#    #+#             */
-/*   Updated: 2019/08/29 17:07:09 by ssheba           ###   ########.fr       */
+/*   Updated: 2019/09/05 16:16:14 by ssheba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mat.h"
 
-void	m3_rotx(t_mat3 *m, t_real alpha)
+void	m3_rotx(t_mat3 *m, t_real cos_a, t_real sin_a)
 {
 	m->r[0][0] = 1;
 	m->r[0][1] = 0;
 	m->r[0][2] = 0;
 	m->r[1][0] = 0;
-	m->r[1][1] = cos(alpha);
-	m->r[1][2] = -sin(alpha);
+	m->r[1][1] = cos_a;
+	m->r[1][2] = -sin_a;
 	m->r[2][0] = 0;
-	m->r[2][1] = sin(alpha);
-	m->r[2][2] = cos(alpha);
+	m->r[2][1] = sin_a;
+	m->r[2][2] = cos_a;
 }
 
-void	m3_roty(t_mat3 *m, t_real alpha)
+void	m3_roty(t_mat3 *m, t_real cos_a, t_real sin_a)
 {
-	m->r[0][0] = cos(alpha);
+	m->r[0][0] = cos_a;
 	m->r[0][1] = 0;
-	m->r[0][2] = sin(alpha);
+	m->r[0][2] = sin_a;
 	m->r[1][0] = 0;
 	m->r[1][1] = 1;
 	m->r[1][2] = 0;
-	m->r[2][0] = -sin(alpha);
+	m->r[2][0] = -sin_a;
 	m->r[2][1] = 0;
-	m->r[2][2] = cos(alpha);
+	m->r[2][2] = cos_a;
 }
 
-void	m3_rotz(t_mat3 *m, t_real alpha)
+void	m3_rotz(t_mat3 *m, t_real cos_a, t_real sin_a)
 {
-	m->r[0][0] = cos(alpha);
-	m->r[0][1] = -sin(alpha);
+	m->r[0][0] = cos_a;
+	m->r[0][1] = -sin_a;
 	m->r[0][2] = 0;
-	m->r[1][0] = sin(alpha);
-	m->r[1][1] = cos(alpha);
+	m->r[1][0] = sin_a;
+	m->r[1][1] = cos_a;
 	m->r[1][2] = 0;
 	m->r[2][0] = 0;
 	m->r[2][1] = 0;
