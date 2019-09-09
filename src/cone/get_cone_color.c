@@ -6,7 +6,7 @@
 /*   By: ssheba <ssheba@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/13 15:58:30 by ssheba            #+#    #+#             */
-/*   Updated: 2019/08/29 17:02:34 by ssheba           ###   ########.fr       */
+/*   Updated: 2019/09/05 16:35:34 by ssheba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ static void	get_normal(t_cone *cone, t_vec3 *pos, t_vec3 *norm)
 {
 	t_mat3	m[4];
 	t_vec3	oz;
+	t_vec3	tmp;
+	t_real	len;
 
 	if (pos->x == cone->o.x && pos->y == cone->o.y && pos->z == cone->o.z)
 	{
@@ -23,9 +25,12 @@ static void	get_normal(t_cone *cone, t_vec3 *pos, t_vec3 *norm)
 		return ;
 	}
 	v3_sub(pos, &cone->o, norm);
-	m3_rotz(m + 0, acos(norm->y / v3_len(norm)));
+	len = v3_len(norm);
+	m3_rotz(m + 0, norm->x / len, norm->y / len);
 	oz = VEC(0, 0, norm->z > 0 ? 1 : -1);
-	m3_rotx(m + 1, acos(v3_dot(&oz, norm) / v3_len(norm)));
+	v3_cross(&oz, norm, &tmp);
+	v3s_mull(&tmp, 1.0 / len, &tmp);
+	m3_rotx(m + 1, v3_dot(&oz, norm) / len, oz.z * v3_len(&tmp));
 	m3_trs(m + 0, m + 2);
 	m3_mul(m + 0, m + 1, m + 3);
 	m3_mul(m + 3, m + 2, m + 3);

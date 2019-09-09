@@ -1,6 +1,6 @@
 cone
 start: 500 500 500
-way: 1 1 0
-rad: 1
+way: 0 1 1
+rad: 1.0
 color: 200 0 0 0
 refl: 300
