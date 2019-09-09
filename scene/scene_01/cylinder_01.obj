@@ -1,0 +1,6 @@
+cylinder
+start: 10 500 700
+way: 0 10 1
+rad: 100
+color: 0 123 100 23
+refl: 300

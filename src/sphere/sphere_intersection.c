@@ -29,8 +29,9 @@ int	sphere_intersection(void *data, t_ray *view, t_vec3 *pos, t_real *t)
 	sc[3] = sc[1] * sc[1] - sc[0] * sc[2];
 	if (sc[3] < 0)
 		return (0);
-	sc[4] = (-sc[1] - sqrt(sc[3])) / sc[0] >= 0 ? \
-	(-sc[1] - sqrt(sc[3])) / sc[0] : (-sc[1] + sqrt(sc[3])) / sc[0];
+//	sc[4] = (-sc[1] - sqrt(sc[3])) / sc[0] >= 0 ? \
+//	(-sc[1] - sqrt(sc[3])) / sc[0] : (-sc[1] + sqrt(sc[3])) / sc[0];
+	sc[4] = (-sc[1] - sqrt(sc[3])) / (sc[0]);
 	if (t)
 		*t = sc[4];
 	if (sc[4] < 0)

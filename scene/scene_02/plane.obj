@@ -1,0 +1,5 @@
+plane
+pos: 200 700 50.0
+norm: 0 -1 0
+color: 123 234 111 1
+refl: 10

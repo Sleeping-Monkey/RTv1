@@ -18,7 +18,7 @@ void	event(t_sdl *win)
 	while (1)
 		if (SDL_WaitEvent(&win->e) != 0)
 		{
-			if (win->e.type == SDL_QUIT)
+			if (win->e.type == SDL_QUIT || (win->e.type == SDL_KEYDOWN && win->e.key.keysym.scancode == SDL_SCANCODE_ESCAPE))
 				finish(win);
 			if (win->e.type == SDL_KEYUP && \
 			win->e.key.keysym.sym == SDLK_RETURN)
