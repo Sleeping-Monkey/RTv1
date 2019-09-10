@@ -35,6 +35,6 @@ t_person	*create_person(t_vec3 o, t_vec3 x, t_vec3 y)
 	new_person->axis.r[1][2] = k.y;
 	new_person->axis.r[2][2] = k.z;
 	m3_inv(&new_person->axis, &new_person->inv_axis);
-	new_person->o = o;
+	m3v3_mul(&new_person->axis, &o, &new_person->o);
 	return (new_person);
 }

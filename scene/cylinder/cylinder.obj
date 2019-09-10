@@ -1,5 +1,5 @@
 cylinder
-start: 500 500 500
+start: 500 500 5000
 way: 0 1 1
 rad: 500
 color: 200 0 0 0

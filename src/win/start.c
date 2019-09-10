@@ -42,7 +42,6 @@ static void	init_param(t_sdl *win, char **av, int ac)
 	av[2][0] != '-' || av[2][1] != 'l' || av[2][2] != '\0')
 		msg_finish(USG_MSG, NULL, 0);
 	win->view = read_personinfo(get_fd(av[1]));
-	printf("person is ok\n");
 	i = 3;
 	while (i < ac && av[i][0] != '-')
 		i++;
@@ -56,7 +55,6 @@ static void	init_param(t_sdl *win, char **av, int ac)
 	while (++j < win->lamp_size)
 		win->lamp[j] = read_shineinfo(get_fd(av[i++]));
 	norm_lamp(win);
-	printf("shine is ok\n");
 	if (av[i][1] != 'o' || av[i][2] != '\0')
 		msg_finish(USG_MSG, NULL, 0);
 	win->obj_size = ac - ++i;
@@ -69,7 +67,6 @@ void		start(char **file_name, int size)
 
 	errno = 0;
 	init_param(&win, file_name, size);
-	printf("after init\n");
 	if (SDL_Init(SDL_INIT_EVERYTHING) != 0)
 		msg_finish(SDL_MSG, NULL, errno);
 	win.win = SDL_CreateWindow("RTv1", 100, 100, WIN_X, WIN_Y, \
@@ -81,7 +78,6 @@ void		start(char **file_name, int size)
 	SDL_MapRGBA(win.img.img->format, 0x00, 0xFF, 0x00, 0x00));
 	SDL_UpdateWindowSurface(win.win);
 	win.img.pixels = (unsigned char *)win.img.img->pixels;
-	printf("Prefer trace\n");
 	trace(&win);
 	SDL_UpdateWindowSurface(win.win);
 	event(&win);

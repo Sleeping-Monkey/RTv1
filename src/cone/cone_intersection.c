@@ -6,7 +6,7 @@
 /*   By: ssheba <ssheba@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/13 15:51:08 by ssheba            #+#    #+#             */
-/*   Updated: 2019/09/09 14:59:09 by rkeli            ###   ########.fr       */
+/*   Updated: 2019/09/05 18:07:55 by ssheba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,8 @@ int			cone_intersection(void *data, t_ray *view, t_vec3 *pos, t_real *t)
 	odds_calc(sc, cone, vec);
 	if (sc[3] < 0)
 		return (0);
-//	sc[4] = (-sc[1] - sqrt(sc[3])) / (sc[0]) >= 0 ? \
-//	(-sc[1] - sqrt(sc[3])) / (sc[0]) : (-sc[1] + sqrt(sc[3])) / (sc[0]);
-	sc[4] = (-sc[1] - sqrt(sc[3])) / (sc[0]);
+	sc[4] = ((-sc[1] - sqrt(sc[3])) / sc[0]) >= 0 ? \
+	((-sc[1] - sqrt(sc[3])) / sc[0]) : ((-sc[1] + sqrt(sc[3])) / sc[0]);
 	if (sc[4] < 0)
 		return (0);
 	if (t)

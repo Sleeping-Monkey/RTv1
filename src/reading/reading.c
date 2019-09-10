@@ -65,7 +65,6 @@ t_object	*read_objinfo(int fd)
 	splitted_strs = ft_strsplit(str, '\n');
 	if (!(tmp = check_figuretype(splitted_strs[0])))
 		msg_finish(ERR_FIG_MSG, NULL, errno);
-	printf("Type is ok\n");
 	obj = get_fig_info(tmp, splitted_strs + 1);
 	free_char_arr(&splitted_strs);
 	return (obj);

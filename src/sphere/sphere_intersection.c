@@ -6,7 +6,7 @@
 /*   By: ssheba <ssheba@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/24 14:08:05 by ssheba            #+#    #+#             */
-/*   Updated: 2019/08/29 17:10:17 by ssheba           ###   ########.fr       */
+/*   Updated: 2019/09/09 17:57:55 by rkeli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,8 @@ int	sphere_intersection(void *data, t_ray *view, t_vec3 *pos, t_real *t)
 	sc[3] = sc[1] * sc[1] - sc[0] * sc[2];
 	if (sc[3] < 0)
 		return (0);
-//	sc[4] = (-sc[1] - sqrt(sc[3])) / sc[0] >= 0 ? \
-//	(-sc[1] - sqrt(sc[3])) / sc[0] : (-sc[1] + sqrt(sc[3])) / sc[0];
-	sc[4] = (-sc[1] - sqrt(sc[3])) / (sc[0]);
+	sc[4] = (-sc[1] - sqrt(sc[3])) / sc[0] >= 0 ? \
+	(-sc[1] - sqrt(sc[3])) / sc[0] : (-sc[1] + sqrt(sc[3])) / sc[0];
 	if (t)
 		*t = sc[4];
 	if (sc[4] < 0)

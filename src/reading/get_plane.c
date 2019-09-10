@@ -33,7 +33,6 @@ t_object	*get_plane(char **splitted)
 			refl = ft_atoi(splitted[i] + 5);
 		else
 			msg_finish(ERR_VAL_MSG, NULL, 0);
-		printf("String: \"%s\"\n", splitted[i]);
 		i++;
 	}
 	return (create_plane(pos, norm, color, refl));

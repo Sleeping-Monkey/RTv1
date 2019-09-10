@@ -1,0 +1,5 @@
+sphere
+center: 600 600 200
+rad: 100
+color: 150 0 0 0
+refl: 1000

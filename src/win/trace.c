@@ -6,7 +6,7 @@
 /*   By: ssheba <ssheba@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/25 10:35:35 by ssheba            #+#    #+#             */
-/*   Updated: 2019/08/29 18:33:59 by ssheba           ###   ########.fr       */
+/*   Updated: 2019/09/09 18:01:03 by rkeli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void		trace(t_sdl *win)
 	errno = 0;
 	if (!(for_thread = (t_f_t *)malloc(sizeof(t_f_t) * THREADS)))
 		msg_finish(MEM_MSG, NULL, errno);
-	ray.start = win->view->o;
+	m3v3_mul(&win->view->inv_axis, &win->view->o, &ray.start);
 	ray.finish = VEC(0, 0, 0);
 	y = 0;
 	while (y < THREADS)
@@ -88,4 +88,5 @@ void		trace(t_sdl *win)
 	y = 0;
 	while (y < THREADS)
 		pthread_join(thread[y++], NULL);
+	free(for_thread);
 }

@@ -6,3 +6,6 @@
 ###./RTv1 -p scene/cone/person.obj -l scene/cone/shine_1.obj -o scene/cone/cone.obj
 ###./RTv1 -p scene/plane/person.obj -l scene/plane/shine_1.obj -o scene/plane/plane.obj
 ###./RTv1 -p scene/scene_01/person.obj -l scene/scene_01/shine.obj scene/scene_01/shine_01.obj -o scene/scene_01/cylinder.obj scene/scene_01/cylinder_01.obj scene/scene_01/sphere.obj scene/scene_01/sphere_01.obj scene/scene_01/sphere_02.obj scene/scene_01/plane.obj
+###./RTv1 -p scene/scene_02/person.obj -l scene/scene_02/shine.obj -o scene/scene_02/plane.obj scene/scene_02/cone.obj
+###./RTv1 -p scene/scene_03/person.obj -l scene/scene_03/shine.obj scene/scene_03/shine_01.obj -o scene/scene_03/plane.obj scene/scene_03/cylinder.obj scene/scene_03/sphere.obj scene/scene_03/plane_01.obj scene/scene_03/cone.obj
+

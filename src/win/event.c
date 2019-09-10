@@ -6,7 +6,7 @@
 /*   By: ssheba <ssheba@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/23 16:19:32 by ssheba            #+#    #+#             */
-/*   Updated: 2019/08/29 18:09:59 by ssheba           ###   ########.fr       */
+/*   Updated: 2019/09/09 17:56:27 by rkeli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ void	event(t_sdl *win)
 	while (1)
 		if (SDL_WaitEvent(&win->e) != 0)
 		{
-			if (win->e.type == SDL_QUIT || (win->e.type == SDL_KEYDOWN && win->e.key.keysym.scancode == SDL_SCANCODE_ESCAPE))
+			if (win->e.type == SDL_QUIT || (win->e.type == SDL_KEYDOWN
+			&& win->e.key.keysym.scancode == SDL_SCANCODE_ESCAPE))
 				finish(win);
 			if (win->e.type == SDL_KEYUP && \
 			win->e.key.keysym.sym == SDLK_RETURN)

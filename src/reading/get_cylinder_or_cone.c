@@ -33,7 +33,7 @@ t_object	*get_cylinder_or_cone(char **splitted, int type)
 			color = get_color(splitted[i] + 6, &color);
 		else if (ft_strcmp(splitted[i], "refl\0") == ':')
 			refl = ft_atoi(splitted[i] + 5);
-		else 
+		else
 			msg_finish(ERR_VAL_MSG, NULL, 0);
 	}
 	if (type == 3)
